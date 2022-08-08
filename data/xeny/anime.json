@@ -1,0 +1,610 @@
+[
+    {
+        "mediaId": 137281,
+        "score": 0,
+        "progress": 8,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 4,
+            "day": 6
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Aharen-san wa Hakarenai",
+                "english": "Aharen-san wa Hakarenai",
+                "native": "\u963f\u6ce2\u9023\u3055\u3093\u306f\u306f\u304b\u308c\u306a\u3044"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx137281-kSbcUUCqUf8m.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx137281-kSbcUUCqUf8m.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Romance",
+                "Slice of Life"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/137281-kWj2z1Nk8akA.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 4,
+                "day": 2
+            }
+        }
+    },
+    {
+        "mediaId": 15583,
+        "score": 0,
+        "progress": 8,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 2,
+            "day": 7
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Date A Live",
+                "english": "Date A Live",
+                "native": "\u30c7\u30fc\u30c8\u30fb\u30a2\u30fb\u30e9\u30a4\u30d6"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx15583-Sxd2J4RJdRhj.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx15583-Sxd2J4RJdRhj.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Action",
+                "Comedy",
+                "Ecchi",
+                "Fantasy",
+                "Mecha",
+                "Romance",
+                "Sci-Fi"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/15583.jpg",
+            "startDate": {
+                "year": 2013,
+                "month": 4,
+                "day": 6
+            }
+        }
+    },
+    {
+        "mediaId": 130592,
+        "score": 0,
+        "progress": 1,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 19
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Hataraku Maou-sama!!",
+                "english": "The Devil is a Part-Timer! Season 2",
+                "native": "\u306f\u305f\u3089\u304f\u9b54\u738b\u3055\u307e\uff01\uff01"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx130592-LAUlhx15mxQu.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx130592-LAUlhx15mxQu.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Fantasy",
+                "Romance",
+                "Slice of Life"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130592-WPfrW1SR4dnY.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 14
+            }
+        }
+    },
+    {
+        "mediaId": 5680,
+        "score": 0,
+        "progress": 1,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 6,
+            "day": 13
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "K-ON!",
+                "english": "K-ON!",
+                "native": "\u3051\u3044\u304a\u3093!"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5680-Xh6B67KuZ2PU.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5680-Xh6B67KuZ2PU.png"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 13,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Music",
+                "Slice of Life"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n5680-aa5kyuG6154Y.jpg",
+            "startDate": {
+                "year": 2009,
+                "month": 4,
+                "day": 3
+            }
+        }
+    },
+    {
+        "mediaId": 113425,
+        "score": 0,
+        "progress": 1,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 5
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Kaifuku Jutsushi no Yarinaoshi",
+                "english": "Redo of Healer",
+                "native": "\u56de\u5fa9\u8853\u58eb\u306e\u3084\u308a\u76f4\u3057"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113425-tYGRUa5pgZje.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx113425-tYGRUa5pgZje.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Action",
+                "Adventure",
+                "Ecchi",
+                "Fantasy"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113425-hcwuSZsuYMtt.jpg",
+            "startDate": {
+                "year": 2021,
+                "month": 1,
+                "day": 13
+            }
+        }
+    },
+    {
+        "mediaId": 124410,
+        "score": 2,
+        "progress": 1,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 4
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Kanojo, Okarishimasu 2",
+                "english": "Rent-a-Girlfriend Season 2",
+                "native": "\u5f7c\u5973\u3001\u304a\u501f\u308a\u3057\u307e\u3059\uff12"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx124410-iScdHzzEqdmk.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx124410-iScdHzzEqdmk.png"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Drama",
+                "Romance"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/124410-mo2jQSOaJIeL.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 2
+            }
+        }
+    },
+    {
+        "mediaId": 127911,
+        "score": 0,
+        "progress": 9,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 4,
+            "day": 14
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Kawaii dake ja Nai Shikimori-san",
+                "english": "Shikimori's Not Just a Cutie",
+                "native": "\u53ef\u611b\u3044\u3060\u3051\u3058\u3083\u306a\u3044\u5f0f\u5b88\u3055\u3093"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127911-cQVL0dhldFwn.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx127911-cQVL0dhldFwn.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Romance",
+                "Slice of Life"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127911-YRSP7vuUy801.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 4,
+                "day": 10
+            }
+        }
+    },
+    {
+        "mediaId": 143270,
+        "score": 0,
+        "progress": 2,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 19
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Lycoris Recoil",
+                "english": "Lycoris Recoil",
+                "native": "\u30ea\u30b3\u30ea\u30b9\u30fb\u30ea\u30b3\u30a4\u30eb"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx143270-iZOJX2DMUFMC.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx143270-iZOJX2DMUFMC.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 13,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Action",
+                "Comedy",
+                "Slice of Life"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/143270-Ivjs2nVpARtS.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 2
+            }
+        }
+    },
+    {
+        "mediaId": 136934,
+        "score": 0,
+        "progress": 1,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Mamahaha no Tsurego ga Moto Kano datta",
+                "english": "My Stepmom's Daughter is My Ex",
+                "native": "\u7d99\u6bcd\u306e\u9023\u308c\u5b50\u304c\u5143\u30ab\u30ce\u3060\u3063\u305f"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx136934-BXmmENtggiHr.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx136934-BXmmENtggiHr.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Romance"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/136934-ZMF9QrRuRbPT.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 6
+            }
+        }
+    },
+    {
+        "mediaId": 129201,
+        "score": 0,
+        "progress": 11,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 4,
+            "day": 15
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Summer Time Render",
+                "english": "Summer Time Rendering",
+                "native": "\u30b5\u30de\u30fc\u30bf\u30a4\u30e0\u30ec\u30f3\u30c0"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx129201-HJBauga2be8I.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx129201-HJBauga2be8I.png"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 25,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Action",
+                "Drama",
+                "Mystery",
+                "Supernatural",
+                "Thriller"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/129201-eeCsKFrCSQPS.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 4,
+                "day": 15
+            }
+        }
+    },
+    {
+        "mediaId": 131646,
+        "score": 0,
+        "progress": 2,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Vanitas no Carte",
+                "english": "The Case Study of Vanitas",
+                "native": "\u30f4\u30a1\u30cb\u30bf\u30b9\u306e\u624b\u8a18"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131646-k6u2UXIsMXEa.jpg",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx131646-k6u2UXIsMXEa.jpg"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "FINISHED",
+            "episodes": 12,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Drama",
+                "Fantasy",
+                "Mystery",
+                "Supernatural"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131646-ewbYrSfyUyp6.jpg",
+            "startDate": {
+                "year": 2021,
+                "month": 7,
+                "day": 3
+            }
+        }
+    },
+    {
+        "mediaId": 141391,
+        "score": 0,
+        "progress": 2,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 24
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Yofukashi no Uta",
+                "english": "Call of the Night",
+                "native": "\u3088\u3075\u304b\u3057\u306e\u3046\u305f"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141391-Wued34kHqIov.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx141391-Wued34kHqIov.png"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 13,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Comedy",
+                "Psychological",
+                "Romance",
+                "Slice of Life",
+                "Supernatural"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/141391-JErChZ8G3b49.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 8
+            }
+        }
+    },
+    {
+        "mediaId": 145545,
+        "score": 0,
+        "progress": 4,
+        "repeat": 0,
+        "notes": "",
+        "startedAt": {
+            "year": 2022,
+            "month": 7,
+            "day": 4
+        },
+        "completedAt": {
+            "year": null,
+            "month": null,
+            "day": null
+        },
+        "media": {
+            "title": {
+                "romaji": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 2nd Season",
+                "english": "Classroom of the Elite Season 2",
+                "native": "\u3088\u3046\u3053\u305d\u5b9f\u529b\u81f3\u4e0a\u4e3b\u7fa9\u306e\u6559\u5ba4\u3078 2nd Season"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145545-DGl3LVvFlnHi.png",
+                "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx145545-DGl3LVvFlnHi.png"
+            },
+            "type": "ANIME",
+            "format": "TV",
+            "status": "RELEASING",
+            "episodes": 13,
+            "volumes": null,
+            "chapters": null,
+            "countryOfOrigin": "JP",
+            "genres": [
+                "Drama",
+                "Mystery",
+                "Psychological"
+            ],
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145545-XeHhS7dJJLlj.jpg",
+            "startDate": {
+                "year": 2022,
+                "month": 7,
+                "day": 4
+            }
+        }
+    }
+]

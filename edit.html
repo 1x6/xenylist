@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
+  <script src="edit.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="edit_style.css">
+</head>
+<body>
+
+    <div class="editor">
+        <h1>DITF</h1>
+        
+        <table class="table" id="editTable">
+
+            <tr>
+                <th>Status</th>
+                <th>Score</th>
+                <th>Progress</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="status" id="status">
+                        <option value="Watching">Watching</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Paused">Paused</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Planning">Planning</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" id="score" name="score" value="0">
+                </td>
+                <td>
+                    <input type="number" id="progress" name="progress" value="0">
+                </td>
+            </tr>
+            
+        </table>
+        <button id="save">Save</button>
+        <br>
+        
+
+    </div>
+  
+</body>
+</html>
