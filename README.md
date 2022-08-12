@@ -4,6 +4,6 @@ self hosted anime tracker
 ________________
 
 todo:
-- finish edit page and use as iframe??
+- add list statuses (watching, complete etc)
 - add full list rather than just watching
 - fix styling
