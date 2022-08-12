@@ -1,5 +1,5 @@
 # xenylist
-self hosted anime tracker
+half self hosted anime tracker
 
 ________________
 
