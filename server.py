@@ -4,7 +4,7 @@ from flask import Flask, request, Response, jsonify
 
 app = Flask(__name__)
 
-@app.route('/api/v1/watching')
+@app.route('/api/v1/list/anime')
 def watching():
     f = open('data/xeny/anime.json', encoding="utf8"); data = json.load(f)
     resp = Response(json.dumps(data))
@@ -13,26 +13,41 @@ def watching():
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
-@app.route('/api/v1/edit', methods=['POST'])
+@app.route('/api/v1/edit', methods=['POST', 'OPTIONS'])
 def add():
-    data = request.get_json()
-    # make so u can do deletr request and add actions to specify what to do
+    if request.method == 'OPTIONS':
+        resp = Response('')
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        resp.headers['Access-Control-Allow-Methods'] = 'POST'
+        resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return resp
+    elif request.method == 'POST':
+        data = request.get_json()
+        # make so u can do deletr request and add actions to specify what to do
+        media_type = data['media_type']
+        mediaId = data['mediaId']
+        progress = data['progress']
+        score = data['score']
+        #status = data['status'] for dropdown watching, completed, onhold, dropped
 
-    action = data['action']
-    mediaId = data['mediaId']
-    progress = data['progress']
-    with open('data/xeny/anime.json', encoding="utf8") as f: local = json.load(f)
-    for item in local:
-        if item['mediaId'] == mediaId:
-            item['progress'] = progress
-            break
-    with open('data/xeny/anime.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
-    f.close()
-    return jsonify({'success': True})
+        if media_type == 'anime':
+            with open('data/xeny/anime.json', encoding="utf8") as f: local = json.load(f)
+            for item in local:
+                if item['mediaId'] == mediaId:
+                    item['progress'] = progress
+                    item['score'] = score
+                    break
+
+            with open('data/xeny/anime.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
+            f.close()
+
+    resp = Response(json.dumps({'success': True}))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @app.route('/api/v1/info', methods=['GET'])
-def add():
+def info():
     data = request.get_json()
 
     _type = data['_type']
