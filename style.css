@@ -30,23 +30,55 @@ body {
   color: var(--accent);
 }
 
+@media (min-width: 1200px) {
+  .main {
+    margin-left: 380px;
+    margin-right: 380px;
+  }
+}
+
 .main {
   color: var(--font);
+
+}
+
+@media (max-width: 500px) {
+  .main {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main {
+    margin-left: 5px;
+    margin-right: 5px;
+    /* add more shit like font and stuff */
+  }
 }
 
 .headers {
   font-weight: 500;
 }
 
-.table {
+table {
   background-color: #151f2e;
   padding: 10px;
   border-radius: 10px;
+
+
+  table-layout: fixed;
+
 }
 
 th, td {
   padding: 10px;
   border-bottom: 1px solid #1c2b3a;
+}
+
+
+.center {
+  text-align: center;
 }
 
 .cover-icon {
@@ -55,5 +87,32 @@ th, td {
   border-radius: 3px;
   height: 40px;
   width: 40px;
+}
+
+/* nth-child(1) = the first td in each tr */
+td:nth-child(1) {
+  width: 5%;
+  }
+
+/* the second */
+td:nth-child(2) {
+  width: 60%;
+}
+
+/* the third */
+td:nth-child(3) {
+  width: 10%;
+ }
+
+td:nth-child(4) {
+  width: 10%;
+}
+
+td:nth-child(5) {
+  width: 5%;
+}
+
+td:nth-child(6) {
+  width: 5%;
 }
 

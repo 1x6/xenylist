@@ -5,8 +5,17 @@ from flask import Flask, request, Response, jsonify
 app = Flask(__name__)
 
 @app.route('/api/v1/list/anime')
-def watching():
+def anime_list():
     f = open('data/xeny/anime.json', encoding="utf8"); data = json.load(f)
+    resp = Response(json.dumps(data))
+    f.close()
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Content-Type'] = 'application/json'
+    return resp
+
+@app.route('/api/v1/list/manga')
+def manga_list():
+    f = open('data/xeny/manga.json', encoding="utf8"); data = json.load(f)
     resp = Response(json.dumps(data))
     f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -25,20 +34,33 @@ def add():
         data = request.get_json()
         # make so u can do deletr request and add actions to specify what to do
         media_type = data['media_type']
-        mediaId = data['mediaId']
+        media_id = data['media_id']
         progress = data['progress']
         score = data['score']
+        status = data['status']
         #status = data['status'] for dropdown watching, completed, onhold, dropped
 
         if media_type == 'anime':
             with open('data/xeny/anime.json', encoding="utf8") as f: local = json.load(f)
             for item in local:
-                if item['mediaId'] == mediaId:
+                if item['media_id'] == media_id:
+                    item['progress'] = progress
+                    item['score'] = score
+                    item['status'] = status
+                    break
+
+            with open('data/xeny/anime.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
+            f.close()
+
+        if media_type == 'manga':
+            with open('data/xeny/manga.json', encoding="utf8") as f: local = json.load(f)
+            for item in local:
+                if item['media_id'] == media_id:
                     item['progress'] = progress
                     item['score'] = score
                     break
 
-            with open('data/xeny/anime.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
+            with open('data/xeny/manga.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
             f.close()
 
     resp = Response(json.dumps({'success': True}))

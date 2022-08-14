@@ -1,19 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
-  <script src="main.js"></script>
-  <link rel="stylesheet" href="style.css">
+<style>
+
+    @import url('https://rsms.me/inter/inter.css');
+    html { font-family: 'Inter', sans-serif; }
+    @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+    }
+
+    body {
+        background-color: #0b1622;
+        display: inline;
+        color: #8b9aa9;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .flex-container {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .flex-child {
+        flex: 0 1 auto;
+        text-align: center;
+        border: #151f2e solid 5px;
+        border-radius: 10px;
+        padding: 50px;
+        transition: ease 0.7s;
+    }  
+
+    .flex-child:hover {
+        color: #08abff;
+        transition: ease 0.7s;
+        cursor: pointer;
+    }
+
+    .flex-child:first-child {
+        margin-right: 20px;
+    } 
+</style>
 </head>
 <body>
+    <div class="flex-container">
+        <div class="flex-child">
+            <i class="fa-solid fa-tv fa-4x"></i>
+            <h1 onclick="window.open('anime.html')">Anime List</h1>
+        </div>
 
-    <div class="main">
-        <h1 class="headers">Watching</h1>
-        <table class="table" id="mediaTable"></table> 
+        <div class="flex-child">
+            <i class="fa-solid fa-book fa-4x"></i>
+            <h1 onclick="window.open('manga.html')">Manga List</h1>
+        </div>
     </div>
-  
 </body>
 </html>
