@@ -6,6 +6,6 @@ ________________
 todo:
 - fix styling
 - recent updates api
-- mobile friendly site?
+- mobile friendly site? FR
 - put on server with api on subdomain + behind reverse proxy
-- ability to add media
+
