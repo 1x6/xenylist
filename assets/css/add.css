@@ -1,0 +1,92 @@
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+html { font-family: 'Inter var', sans-serif; }
+}
+body {
+    background-color: #0b1622;
+    display: inline;
+    color: #8b9aa9;
+    font-family: 'Inter', sans-serif;
+}
+.flex-container {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.flex-child {
+    flex: 0 1 auto;
+    text-align: center;
+    /*border: #151f2e solid 5px;*/
+    border-radius: 10px;
+    padding: 50px;
+}  
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+.search-box {
+    width: 500px;
+    height: 100px;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #151f2e;
+    color: #8592a3;
+    vertical-align: middle;
+}
+.search-box:focus {
+    outline: none;
+}
+.search-button {
+    display: inline-block;
+    width: 100px;
+    height: 130px;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #151f2e !important;
+    color: #8592a3;
+    vertical-align: middle;
+    transition: ease 0.7s;
+}
+.search-button:hover {
+    color: #08abff;
+    transition: ease 0.7s;
+    cursor: pointer;
+}
+input {
+    font-size: 40px;
+    font-family: 'Inter', sans-serif;
+}
+input::placeholder {
+font: 40px 'Inter', sans-serif;
+}
+
+.CH-flex-container {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.CH-flex-child {
+    flex: 0 1 auto;
+    text-align: center;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 50px;
+    transition: ease 0.7s;
+}  
+.CH-flex-child:hover {
+    color: #08abff;
+    transition: ease 0.7s;
+    cursor: pointer;
+}
+.CH-flex-child:first-child {
+    margin-right: 20px;
+} 

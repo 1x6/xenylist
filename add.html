@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/add.css">
+  <script src="assets/js/add.js"></script>
+</head>
+<body>
+    <div id="choose" class="CH-flex-container">
+        
+        <div onclick="set_type('anime')" class="CH-flex-child">
+            <i class="fa-solid fa-tv fa-4x"></i>
+            <h1>Anime</h1>
+        </div>
+
+        <div onclick="set_type('manga')" class="CH-flex-child">
+            <i class="fa-solid fa-book fa-4x"></i>
+            <h1>Manga</h1>
+        </div>
+    </div>
+
+    <div id="adding" class="flex-container">
+        <input type="text" class="search-box flex-child" id="add_box" placeholder="Type an AniList ID here...">
+        <button class="search-button flex-child" id="add_button" onclick="get_data()">
+            <i class="fas fa-search fa-4x"></i>   
+        </button>
+                     
+    </div>
+</body>
+</html>
