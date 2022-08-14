@@ -5,7 +5,6 @@ ________________
 
 todo:
 - add list statuses (watching, complete etc) + filter
-- add full list rather than just watching
 - fix styling
 - recent updates api
 - mobile friendly site?
