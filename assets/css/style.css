@@ -1,5 +1,5 @@
 @import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
+html { font-family: 'Inter', sans-serif; } 
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
@@ -11,7 +11,7 @@ html { font-family: 'Inter', sans-serif; }
 
 body {
     background-color: #0b1622;
-    font-family: Inter;
+    font-family: Inter !important;
     color: var(--font);
 }
 
@@ -30,7 +30,7 @@ body {
   color: var(--accent);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .main {
     margin-left: 380px;
     margin-right: 380px;
@@ -42,10 +42,14 @@ body {
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .main {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  td {
+    font-size: 20px;
   }
 }
 
@@ -89,30 +93,65 @@ th, td {
   width: 40px;
 }
 
-/* nth-child(1) = the first td in each tr */
+/* the second */
 td:nth-child(1) {
   width: 5%;
+}
+
+.search-box {
+  width: 110px;
+  height: 20px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #151f2e;
+  color: #8592a3;
+  vertical-align: middle;
+  
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+input {
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+input::placeholder {
+font: 15px 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+  .list-type-btn {
+    padding: 1px !important;
+    font-size: 30px !important;
   }
+}
+  
 
-/* the second */
-td:nth-child(2) {
-  width: 60%;
+.list-type-container {
+  display: inline-block;
 }
 
-/* the third */
-td:nth-child(3) {
-  width: 10%;
- }
-
-td:nth-child(4) {
-  width: 10%;
+.list-type-btn {
+  font-family: 'Inter', sans-serif;
+  width: auto;
+  height: 50px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  background-color: #151f2e !important;
+  color: #8592a3;
+  text-align: center;
+  transition: ease 0.7s;
+  font-size: 13px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-td:nth-child(5) {
-  width: 5%;
+.list-type-btn:hover {
+  color: var(--accent);
+  transition: ease 0.7s;
+  cursor: pointer;
 }
-
-td:nth-child(6) {
-  width: 5%;
-}
-

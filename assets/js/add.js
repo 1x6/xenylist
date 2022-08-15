@@ -11,7 +11,7 @@ var add_media = function(id, type) {
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
     xmlhttp.open("POST", endpoint + "add_media");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify({"media_type": type, "media_id": id}));
+    xmlhttp.send(JSON.stringify({"media_type": type, "media_id": id.replace(/\D/g,'')}));
     xmlhttp.onload  = function() {
         var jsonResponse = JSON.parse(xmlhttp.responseText);
         alert(jsonResponse.title + " added to your list!");

@@ -258,7 +258,7 @@
     {
         "title": "Natsume's Book of Friends",
         "media_id": 31859,
-        "status": "PAUSED",
+        "status": "paused",
         "score": 0,
         "progress": 8,
         "image": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx31859-mITgIaJFBzl4.png"
@@ -574,5 +574,13 @@
         "score": "0",
         "progress": "19",
         "image": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx98370-kbWNfSGsNYzH.jpg"
+    },
+    {
+        "title": "Seaside Stranger: Harukaze no \u00c9tranger",
+        "media_id": 85617,
+        "status": "completed",
+        "score": "0",
+        "progress": "1",
+        "image": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/nx85617-sO7sJy6A2brd.jpg"
     }
 ]

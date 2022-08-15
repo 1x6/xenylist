@@ -33,10 +33,50 @@
         text-align: center;
         border: #151f2e solid 5px;
         border-radius: 10px;
-        padding: 30px;
+        padding: 20px;
         transition: ease 0.7s;
-        margin-right: 20px;
+        width: 150px;
     }  
+
+    .flex-child:first-child{
+        margin-right: 20px;
+    }
+
+    .flex-child:nth-child(2) {
+        margin-right: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+        .flex-container {
+            display: flex;
+            flex-flow: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            width: 100%;
+            align-content: center;
+        }
+
+        .flex-child {
+            flex: 0 1 auto;
+            text-align: center;
+            border: #151f2e solid 5px;
+            border-radius: 10px;
+            padding: 20px;
+            transition: ease 0.7s;
+            margin-top: 20px;
+            width: 200px;
+        }
+
+        .flex-child:first-child{
+            margin-right: 0px;
+        }
+
+        .flex-child:nth-child(2) {
+            margin-right: 0px;
+        }
+    }
+        
 
     .flex-child:hover {
         color: #08abff;
@@ -54,7 +94,7 @@
             <h1>Anime List</h1>
         </div>
 
-        <div onclick="window.open('manga.html')" class="flex-child">
+        <div onclick="window.open('manga.html')" class="flex-child" class="second-child">
             <i class="fa-solid fa-book fa-4x"></i>
             <h1>Manga List</h1>
         </div>
