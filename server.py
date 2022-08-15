@@ -105,7 +105,7 @@ def add_media():
 
         r = requests.post("https://graphql.anilist.co", json=postme)
         resp = r.json()
-        print(resp)
+        
         feeds = []
 
         with open(f"data/xeny/{media_type}.json", "r") as f:
