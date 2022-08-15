@@ -33,8 +33,9 @@
         text-align: center;
         border: #151f2e solid 5px;
         border-radius: 10px;
-        padding: 50px;
+        padding: 30px;
         transition: ease 0.7s;
+        margin-right: 20px;
     }  
 
     .flex-child:hover {
@@ -43,9 +44,7 @@
         cursor: pointer;
     }
 
-    .flex-child:first-child {
-        margin-right: 20px;
-    } 
+
 </style>
 </head>
 <body>
@@ -58,6 +57,11 @@
         <div onclick="window.open('manga.html')" class="flex-child">
             <i class="fa-solid fa-book fa-4x"></i>
             <h1>Manga List</h1>
+        </div>
+
+        <div onclick="window.open('add.html')" class="flex-child">
+            <i class="fa-solid fa-plus fa-4x"></i>
+            <h1>Add Entry</h1>
         </div>
     </div>
 </body>
