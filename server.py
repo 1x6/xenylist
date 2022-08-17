@@ -18,9 +18,8 @@ def latest_activity(id, progress, media):
     if resp["data"]["Media"]["title"]["english"] == None:
         title = resp["media"]["title"]["romaji"]
     
-    with open(f'data/xeny/latest.json', 'w', encoding="utf8") as f1:
-        json.dump({"id": id, "progress": progress, "media": media, "title": title}, f1, indent=4)
-        f1.close()
+    data = {"media_id": id, "progress": progress, "media": media, "title": title}
+    send2proxy = requests.post("https://xeny-expose-api.herokuapp.com/api/v1/rec_latest", json=data)
         
 
 @app.route('/api/v1/latest')
