@@ -8,5 +8,5 @@ todo:
 - maybe add stars for scoring?? 1-5
 - add password auth for exposed instances (like swizzin)
 - make docs 
-
+- learn how to use git
 
