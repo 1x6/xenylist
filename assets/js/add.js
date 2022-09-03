@@ -19,6 +19,31 @@ var add_media = function(id, type) {
         }
      };
 
+var search = function() {
+    query = document.getElementById("search_box").value;
+    $.getJSON(endpoint + "search?query=" + query, function(results) {
+        document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
+        document.getElementById("results-container").style = "display: flex;"
+        results["data"]["anime"]["results"].forEach(data => {
+            add_result(data, "anime");
+        });
+        results["data"]["manga"]["results"].forEach(data => {
+            add_result(data, "manga");
+        });
+    });
+};
+    
+var add_result = function(data, type) {
+    const node = document.createElement("div");
+    node.className = "result";
+    const h2 = document.createElement("h2");
+    h2.innerHTML = data["title"]["english"] != null ? data["title"]["english"] : data["title"]["romaji"];
+    node.appendChild(h2);
+    const h3 = document.createElement("h3");
+    h3.innerHTML = data["startDate"]["year"] + " " + data["format"];
+    node.appendChild(h3);
+    document.getElementById("results-" + type).appendChild(node);
+}
 
 var set_type = function(type) {
     const type_ = document.createElement("span");
@@ -39,7 +64,7 @@ var choose = function() {
 }
 
 function init () {
-    choose();
+    // choose();
 }
 
 window.onload = init;
