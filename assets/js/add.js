@@ -23,6 +23,7 @@ var search = function() {
     query = document.getElementById("search_box").value;
     $.getJSON(endpoint + "search?query=" + query, function(results) {
         document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
+        clear_results();
         document.getElementById("results-container").style = "display: flex;"
         results["data"]["anime"]["results"].forEach(data => {
             add_result(data, "anime");
@@ -42,7 +43,17 @@ var add_result = function(data, type) {
     const h3 = document.createElement("h3");
     h3.innerHTML = data["startDate"]["year"] + " " + data["format"];
     node.appendChild(h3);
+    const id = document.createElement("p");
+    id.hidden = true;
+    id.innerHTML = data["id"];
+    node.appendChild(id);
     document.getElementById("results-" + type).appendChild(node);
+}
+
+var clear_results = function() {
+    for(let element of document.getElementsByClassName("results-container")) {
+        element.innerHTML = "";
+    }
 }
 
 var set_type = function(type) {
