@@ -136,6 +136,20 @@ def add_media():
         resp = Response(json.dumps({'title': _dict["title"], "success": True}))
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
+
+@app.route('/api/v1/search')
+def search():
+
+    query = request.args["query"]
+
+    graphql = {"query": "query($search: String){anime:Page(perPage:5){results:media(type:ANIME,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}manga:Page(perPage:5){results:media(type:MANGA,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}}",
+    "variables": {"search": query}}
+
+    r = requests.post("https://graphql.anilist.co", json=graphql)
+
+    resp = Response(json.dumps(r.json()))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
         
 app.run(debug=True, host='0.0.0.0', port=2808)
 
