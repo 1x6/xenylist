@@ -9,4 +9,8 @@ todo:
 - add password auth for exposed instances (like swizzin)
 - make docs 
 
-
+search todo:
+- make it remove old entries
+- check if ... needed
+- make clickable & hover
+- fix phone screen compatability 😭
