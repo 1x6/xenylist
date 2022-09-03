@@ -39,7 +39,7 @@ var add_result = function(data, type) {
     const node = document.createElement("div");
     node.className = "result";
     const title = data["title"]["english"] != null ? data["title"]["english"] : data["title"]["romaji"]
-    node.setAttribute("onclick", `ask_confirm('${title}', '${data["id"]}', '${data["type"]}');`)
+    node.setAttribute("onclick", `ask_confirm('${title}', '${data["id"]}', '${data["type"].toLowerCase()}');`)
     const h2 = document.createElement("h2");
     h2.innerHTML = title;
     node.appendChild(h2);
