@@ -22,6 +22,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+.result {
+    cursor: pointer;
+}
 .flex-child {
     flex: 0 1 auto;
     text-align: center;

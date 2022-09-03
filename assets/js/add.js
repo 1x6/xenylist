@@ -1,4 +1,5 @@
 let endpoint = "http://localhost:2808/api/v1/";
+// let endpoint = "http://192.168.1.52:2808/api/v1/";
 let type = "";
 
 get_data = function(){
@@ -37,8 +38,10 @@ var search = function() {
 var add_result = function(data, type) {
     const node = document.createElement("div");
     node.className = "result";
+    const title = data["title"]["english"] != null ? data["title"]["english"] : data["title"]["romaji"]
+    node.setAttribute("onclick", `ask_confirm('${title}', '${data["id"]}', '${data["type"]}');`)
     const h2 = document.createElement("h2");
-    h2.innerHTML = data["title"]["english"] != null ? data["title"]["english"] : data["title"]["romaji"];
+    h2.innerHTML = title;
     node.appendChild(h2);
     const h3 = document.createElement("h3");
     h3.innerHTML = data["startDate"]["year"] + " " + data["format"];
@@ -50,6 +53,12 @@ var add_result = function(data, type) {
 var clear_results = function() {
     for(let element of document.getElementsByClassName("results-container")) {
         element.innerHTML = "";
+    }
+}
+
+var ask_confirm = function(title, id, type) {
+    if(confirm("Do you want to add " + title + " to your list?")) {
+        add_media(id, type);
     }
 }
 
