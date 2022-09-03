@@ -46,7 +46,6 @@ var add_result = function(data, type) {
     const h3 = document.createElement("h3");
     h3.innerHTML = data["startDate"]["year"] + " " + data["format"];
     node.appendChild(h3);
-    const id = document.createElement("p");
     document.getElementById("results-" + type).appendChild(node);
 }
 
