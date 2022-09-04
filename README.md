@@ -14,3 +14,4 @@ search todo:
 - check if ... needed
 - make clickable & hover
 - fix phone screen compatability 😭
+- hiding the load more button when there's no (more) results
