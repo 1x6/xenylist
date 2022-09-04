@@ -142,7 +142,7 @@ def search():
 
     query = request.args["query"]
 
-    graphql = {"query": "query($search: String){anime:Page(perPage:5){results:media(type:ANIME,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}manga:Page(perPage:5){results:media(type:MANGA,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}}",
+    graphql = {"query": "query($search: String){anime:Page(perPage:12){results:media(type:ANIME,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}manga:Page(perPage:12){results:media(type:MANGA,search:$search){id type title{english romaji} coverImage{medium} format startDate{year}}}}",
     "variables": {"search": query}}
 
     r = requests.post("https://graphql.anilist.co", json=graphql)

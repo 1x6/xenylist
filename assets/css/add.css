@@ -17,11 +17,16 @@ body {
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    margin-top: 20px;
 }
 .results-container {
     display: flex;
     flex-direction: column;
 }
+.results-container:first-child{
+    margin-top: 30px;
+}
+
 .result {
     cursor: pointer;
 }

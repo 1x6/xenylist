@@ -20,34 +20,61 @@ var add_media = function(id, type) {
         }
      };
 
-var search = function() {
+function load_more() {
+    if (localStorage.getItem("load_more_last") > 0) {
+        page = localStorage.getItem("load_more_last");
+        clear_results();
+        search(page);
+    } else {
+        localStorage.setItem("load_more_last", 0);
+        search(0);
+    };
+};
+
+function search(page) {
+    var p2 = parseInt(page) + 2;
     query = document.getElementById("search_box").value;
     $.getJSON(endpoint + "search?query=" + query, function(results) {
         document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
         clear_results();
         document.getElementById("results-container").style = "display: flex;"
+        all_anime = [];
+        all_manga = [];
         results["data"]["anime"]["results"].forEach(data => {
-            add_result(data, "anime");
+            all_anime.push(data);
         });
         results["data"]["manga"]["results"].forEach(data => {
-            add_result(data, "manga");
+            all_manga.push(data);
         });
-    });
-};
+        add_result(all_anime.slice(page, p2));
+        add_result(all_manga.slice(page, p2));
+        localStorage.setItem("load_more_last", p2);
     
-var add_result = function(data, type) {
-    const node = document.createElement("div");
-    node.className = "result";
-    const title = data["title"]["english"] != null ? data["title"]["english"] : data["title"]["romaji"]
-    node.setAttribute("onclick", `ask_confirm('${title}', '${data["id"]}', '${data["type"].toLowerCase()}');`)
-    const h2 = document.createElement("h2");
-    h2.innerHTML = title;
-    node.appendChild(h2);
-    const h3 = document.createElement("h3");
-    h3.innerHTML = data["startDate"]["year"] + " " + data["format"];
-    node.appendChild(h3);
-    document.getElementById("results-" + type).appendChild(node);
+    });
 }
+
+    
+var add_result = function(data) {
+
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i])
+        var node = document.createElement("div"); 
+        node.className = "result";
+        const title = data[i]["title"]["english"] != null ? data[i]["title"]["english"] : data[i]["title"]["romaji"]
+        node.setAttribute("onclick", `ask_confirm('${title}', '${data[i]["id"]}', '${data[i]["type"].toLowerCase()}');`)
+        const h2 = document.createElement("h2");
+        h2.innerHTML = elipsis(title, 40);
+        node.appendChild(h2);
+        const h3 = document.createElement("h3");
+        h3.innerHTML = data[i]["startDate"]["year"] + " " + data[i]["format"];
+        node.appendChild(h3);
+        //document.getElementById("results-" + type).appendChild(node);
+        document.getElementById("results").appendChild(node);
+    }
+    
+}
+
+
 
 var clear_results = function() {
     for(let element of document.getElementsByClassName("results-container")) {
@@ -60,6 +87,16 @@ var ask_confirm = function(title, id, type) {
         add_media(id, type);
     }
 }
+
+function elipsis(string, max_length) {
+    if (string.length > max_length) {
+      return string.slice(0, max_length) + "..";
+    } else {
+      return string;
+    }
+  }
+  
+// manual entry, unused
 
 var set_type = function(type) {
     const type_ = document.createElement("span");
