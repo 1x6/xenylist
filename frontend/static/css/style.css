@@ -1,0 +1,157 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; } 
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+:root {
+    --accent: #89b4fa;
+    --font: #9fadbd;
+}
+
+body {
+    background-color: #0b1622;
+    font-family: Inter !important;
+    color: var(--font);
+}
+
+
+.fa-solid {
+  color: #dcddde;
+  transition: 0.3s;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  
+}
+
+.fa-solid:hover {
+  color: var(--accent);
+}
+
+@media (min-width: 1400px) {
+  .main {
+    margin-left: 380px;
+    margin-right: 380px;
+  }
+}
+
+.main {
+  color: var(--font);
+
+}
+
+@media (max-width: 600px) {
+  .main {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  td {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main {
+    margin-left: 5px;
+    margin-right: 5px;
+    /* add more shit like font and stuff */
+  }
+}
+
+.headers {
+  font-weight: 500;
+}
+
+table {
+  background-color: #151f2e;
+  padding: 10px;
+  border-radius: 10px;
+
+
+  table-layout: fixed;
+
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #1c2b3a;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.cover-icon {
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 3px;
+  height: 40px;
+  width: 40px;
+}
+
+/* the second */
+td:nth-child(1) {
+  width: 5%;
+}
+
+.search-box {
+  width: 110px;
+  height: 20px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #151f2e;
+  color: #8592a3;
+  vertical-align: middle;
+  
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+input {
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+input::placeholder {
+font: 15px 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+  .list-type-btn {
+    padding: 1px !important;
+    font-size: 30px !important;
+  }
+}
+  
+
+.list-type-container {
+  display: inline-block;
+}
+
+.list-type-btn {
+  font-family: 'Inter', sans-serif;
+  width: auto;
+  height: 50px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  background-color: #151f2e !important;
+  color: #8592a3;
+  text-align: center;
+  transition: ease 0.7s;
+  font-size: 13px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.list-type-btn:hover {
+  color: var(--accent);
+  transition: ease 0.7s;
+  cursor: pointer;
+}

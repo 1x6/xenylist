@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
+<style>
+
+    @import url('https://rsms.me/inter/inter.css');
+    html { font-family: 'Inter', sans-serif; }
+    @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+    }
+
+    body {
+        background-color: #0b1622;
+        display: inline;
+        color: #8b9aa9;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .flex-container {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .flex-child {
+        flex: 0 1 auto;
+        text-align: center;
+        border: #151f2e solid 5px;
+        border-radius: 10px;
+        padding: 20px;
+        transition: ease 0.7s;
+        width: 150px;
+    }  
+
+    .flex-child:first-child{
+        margin-right: 20px;
+    }
+
+    .flex-child:nth-child(2) {
+        margin-right: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+        .flex-container {
+            display: flex;
+            flex-flow: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            width: 100%;
+            align-content: center;
+        }
+
+        .flex-child {
+            flex: 0 1 auto;
+            text-align: center;
+            border: #151f2e solid 5px;
+            border-radius: 10px;
+            padding: 20px;
+            transition: ease 0.7s;
+            margin-top: 20px;
+            width: 200px;
+        }
+
+        .flex-child:first-child{
+            margin-right: 0px;
+        }
+
+        .flex-child:nth-child(2) {
+            margin-right: 0px;
+        }
+    }
+        
+
+    .flex-child:hover {
+        color: #08abff;
+        transition: ease 0.7s;
+        cursor: pointer;
+    }
+
+    .title {
+        text-align: center;
+        
+    }
+
+
+</style>
+</head>
+<body>
+    <h1 class="title"><a style="color: #08abff">xeny</a>list</h1>
+    <div class="flex-container">
+        
+        <div onclick="window.open('anime')" class="flex-child">
+            <i class="fa-solid fa-tv fa-4x"></i>
+            <h1>Anime List</h1>
+        </div>
+
+        <div onclick="window.open('manga')" class="flex-child" class="second-child">
+            <i class="fa-solid fa-book fa-4x"></i>
+            <h1>Manga List</h1>
+        </div>
+
+        <div onclick="window.open('add')" class="flex-child">
+            <i class="fa-solid fa-plus fa-4x"></i>
+            <h1>Add Entry</h1>
+        </div>
+    </div>
+</body>
+</html>
