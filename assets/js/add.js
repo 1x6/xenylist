@@ -7,24 +7,26 @@ function load_more() {
         //search(page);
         display_results(page);
     };
-
-    if (all_anime.length + all_manga.length == 0) {
+    console.log(all_anime.length + all_manga.length);
+    if (all_anime.length + all_manga.length < 1) {
         document.getElementById("load_more").style.display = "none";
     } else {
         document.getElementById("load_more").style.display = "";
     }
+
 };
 
 function display_results(page) {
+    var an = all_anime.length
+    var ma = all_manga.length
+
 
     if (max_len < 4) {
         document.getElementById("load_more").style.display = "none";
     }
 
     page = parseInt(page);
-    console.log(max_len)
-    
-    console.log(max_len)
+
     document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
     
     document.getElementById("results-container").style = "display: flex;"
@@ -32,17 +34,19 @@ function display_results(page) {
     add_result(all_anime.splice(0, 2));
 
     var node = document.createElement("hr");
-    node.style = "width: 50%;";
+    node.style = "width: 100%;";
     node.setAttribute("id", "line");
     document.getElementById("results").appendChild(node);
 
     add_result(all_manga.splice(0, 2));
 
-    localStorage.setItem("load_more_page", page + 1);
-
-    if (all_anime.length == 0 || all_manga.length == 0) {
+    if (an == 0 || ma == 0) {
         document.getElementById("line").remove();
     }
+
+    localStorage.setItem("load_more_page", page + 1);
+
+    
 
 }
 
