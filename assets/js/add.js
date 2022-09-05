@@ -23,6 +23,8 @@ function display_results(page) {
 
     if (max_len < 4) {
         document.getElementById("load_more").style.display = "none";
+    } else {
+        document.getElementById("load_more").style.display = "";
     }
 
     page = parseInt(page);
@@ -43,6 +45,10 @@ function display_results(page) {
     if (an == 0 || ma == 0) {
         document.getElementById("line").remove();
     }
+    
+    var d = document.getElementById('load_more');
+    var res = document.getElementById('results');
+    res.appendChild(d);
 
     localStorage.setItem("load_more_page", page + 1);
 
@@ -80,17 +86,26 @@ function search() {
 var add_result = function(data) {
 
     for (let i = 0; i < data.length; i++) {
-        console.log(data[i])
         var node = document.createElement("div"); 
         node.className = "result";
+
         const title = data[i]["title"]["english"] != null ? data[i]["title"]["english"] : data[i]["title"]["romaji"]
         node.setAttribute("onclick", `ask_confirm('${title}', '${data[i]["id"]}', '${data[i]["type"].toLowerCase()}');`)
         const h2 = document.createElement("h2");
+        h2.style = "z-index: 1; position: inherit;"
         h2.innerHTML = elipsis(title, 40);
         node.appendChild(h2);
+        
         const h3 = document.createElement("h3");
+        h3.style = "z-index: 1; position: inherit;"
         h3.innerHTML = data[i]["startDate"]["year"] + " " + data[i]["format"];
         node.appendChild(h3);
+
+        const img = document.createElement("div");
+        img.style.backgroundImage = "url(" + data[i]["coverImage"]["medium"] + ")";
+        img.className = "result-bg";
+        node.appendChild(img);
+
         //document.getElementById("results-" + type).appendChild(node);
         document.getElementById("results").appendChild(node);
     }
