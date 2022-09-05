@@ -1,0 +1,149 @@
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+html { font-family: 'Inter var', sans-serif; }
+}
+body {
+    background-color: #0b1622;
+    display: inline;
+    color: #8b9aa9;
+    font-family: 'Inter', sans-serif;
+}
+.flex-container {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+}
+.results-container {
+    display: flex;
+    flex-direction: column;
+}
+.results-container:first-child{
+    margin-top: 30px;
+}
+.result {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    background-color: #0b1622;
+    transition: 0.7s;
+    margin-bottom: 10px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+.result-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(3px) brightness(0.2);
+    object-fit: cover;
+    margin-top: -113px;
+    margin-left: -10px;
+}
+
+.result:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: 0.7s;
+    background-color: #232d38;
+}
+.flex-child {
+    flex: 0 1 auto;
+    text-align: center;
+    /*border: #151f2e solid 5px;*/
+    border-radius: 10px;
+    padding: 50px;
+}  
+.flex-child:first-child {
+    margin-right: 20px;
+} 
+.search-box {
+    width: 500px;
+    height: 100px;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #151f2e;
+    color: #8592a3;
+    vertical-align: middle;
+}
+.search-box:focus {
+    outline: none;
+}
+.search-button {
+    display: inline-block;
+    width: 100px;
+    height: 130px;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #151f2e !important;
+    color: #8592a3;
+    vertical-align: middle;
+    transition: ease 0.7s;
+}
+.search-button:hover {
+    color: #08abff;
+    transition: ease 0.7s;
+    cursor: pointer;
+}
+input {
+    font-size: 40px;
+    font-family: 'Inter', sans-serif;
+}
+input::placeholder {
+font: 40px 'Inter', sans-serif;
+}
+
+.CH-flex-container {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.CH-flex-child {
+    flex: 0 1 auto;
+    text-align: center;
+    border: #151f2e solid 5px;
+    border-radius: 10px;
+    padding: 50px;
+    transition: ease 0.7s;
+}  
+.CH-flex-child:hover {
+    color: #08abff;
+    transition: ease 0.7s;
+    cursor: pointer;
+}
+.CH-flex-child:first-child {
+    margin-right: 20px;
+} 
+
+hr {
+    border: 1px solid #151f2e;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.load-more {
+    cursor: pointer;
+    text-align: center;
+    padding: 20px;
+    transition: ease 0.7s;
+}
+
+.load-more:hover {
+    color: #08abff;
+    transition: ease 0.7s;
+}
