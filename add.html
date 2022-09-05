@@ -12,7 +12,7 @@
     
     <div id="search-box" class="flex-container">
         <input type="text" name="search_box" id="search_box" class="search-box flex-child">
-        <button class="search-button flex-child" id="search_button" onclick="search(0)">
+        <button class="search-button flex-child" id="search_button" onclick="search()">
             <i class="fas fa-search fa-4x"></i>
         </button>
     </div>
@@ -20,7 +20,7 @@
     <div id="results-container" class="flex-container" style="display: none;">
         
         <div id="results" class="results-container"></div>
-        <p onclick="load_more()" style="cursor: pointer">Load more</p>
+        <p id="load_more" onclick="load_more()" style="cursor: pointer">Load more</p>
 
     </div>
 

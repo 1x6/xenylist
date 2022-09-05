@@ -1,55 +1,62 @@
 let endpoint = "http://localhost:2808/api/v1/";
-// let endpoint = "http://192.168.1.52:2808/api/v1/";
-let type = "";
-
-get_data = function(){
-    id = document.getElementById("add_box").value;
-    type = document.getElementById("type").innerHTML;
-    add_media(id, type);
-}
-
-var add_media = function(id, type) {
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", endpoint + "add_media");
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify({"media_type": type, "media_id": id.replace(/\D/g,'')}));
-    xmlhttp.onload  = function() {
-        var jsonResponse = JSON.parse(xmlhttp.responseText);
-        alert(jsonResponse.title + " added to your list!");
-        choose();
-        }
-     };
 
 function load_more() {
     if (localStorage.getItem("load_more_last") > 0) {
         page = localStorage.getItem("load_more_last");
         clear_results();
-        search(page);
-    } else {
-        localStorage.setItem("load_more_last", 0);
-        search(0);
+        //search(page);
+        display_results(page);
     };
+    if (localStorage.getItem("load_more_last") == 0) {
+        display_results(0);
+    }
 };
 
-function search(page) {
+function display_results(page) {
+
+    if (localStorage.getItem("load_more_last") == 10) {
+        document.getElementById("load_more").style.display = "none";
+    }
+
+    document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
+    
+    document.getElementById("results-container").style = "display: flex;"
+
     var p2 = parseInt(page) + 2;
+
+    add_result(all_anime.slice(page, p2));
+
+    var node = document.createElement("hr");
+    node.style = "width: 50%;";
+    node.setAttribute("id", "line");
+    document.getElementById("results").appendChild(node);
+
+    add_result(all_manga.slice(page, p2));
+
+    localStorage.setItem("load_more_last", p2);
+}
+
+function search() {
+    clear_results();
+
     query = document.getElementById("search_box").value;
     $.getJSON(endpoint + "search?query=" + query, function(results) {
-        document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
-        clear_results();
-        document.getElementById("results-container").style = "display: flex;"
+        
         all_anime = [];
         all_manga = [];
+
         results["data"]["anime"]["results"].forEach(data => {
             all_anime.push(data);
         });
         results["data"]["manga"]["results"].forEach(data => {
             all_manga.push(data);
         });
-        add_result(all_anime.slice(page, p2));
-        add_result(all_manga.slice(page, p2));
-        localStorage.setItem("load_more_last", p2);
-    
+        
+        //localStorage.setItem("all_anime", all_anime);
+        //localStorage.setItem("all_manga", all_manga);
+        localStorage.setItem("load_more_last", 0);
+
+        display_results(0);
     });
 }
 
@@ -74,8 +81,6 @@ var add_result = function(data) {
     
 }
 
-
-
 var clear_results = function() {
     for(let element of document.getElementsByClassName("results-container")) {
         element.innerHTML = "";
@@ -96,28 +101,3 @@ function elipsis(string, max_length) {
     }
   }
   
-// manual entry, unused
-
-var set_type = function(type) {
-    const type_ = document.createElement("span");
-    type_.id = "type";
-    type_.innerText = type;
-    type_.style.display = "none";
-    document.body.appendChild(type_);
-
-    document.getElementById("choose").style.display = "none";
-    document.getElementById("adding").style.display = "flex";
-    document.getElementById("add_box").setAttribute("placeholder", "Enter " + type + " ID");
-    
-}
-
-var choose = function() {
-    document.getElementById("adding").style.display = "none";
-    document.getElementById("choose").style.display = "flex";
-}
-
-function init () {
-    // choose();
-}
-
-window.onload = init;
