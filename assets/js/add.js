@@ -1,39 +1,49 @@
 let endpoint = "http://localhost:2808/api/v1/";
 
 function load_more() {
-    if (localStorage.getItem("load_more_last") > 0) {
-        page = localStorage.getItem("load_more_last");
+    if (localStorage.getItem("load_more_page") > 0) {
+        page = localStorage.getItem("load_more_page");
         clear_results();
         //search(page);
         display_results(page);
     };
-    if (localStorage.getItem("load_more_last") == 0) {
-        display_results(0);
+
+    if (all_anime.length + all_manga.length == 0) {
+        document.getElementById("load_more").style.display = "none";
+    } else {
+        document.getElementById("load_more").style.display = "";
     }
 };
 
 function display_results(page) {
 
-    if (localStorage.getItem("load_more_last") == 10) {
+    if (max_len < 4) {
         document.getElementById("load_more").style.display = "none";
     }
 
+    page = parseInt(page);
+    console.log(max_len)
+    
+    console.log(max_len)
     document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
     
     document.getElementById("results-container").style = "display: flex;"
 
-    var p2 = parseInt(page) + 2;
-
-    add_result(all_anime.slice(page, p2));
+    add_result(all_anime.splice(0, 2));
 
     var node = document.createElement("hr");
     node.style = "width: 50%;";
     node.setAttribute("id", "line");
     document.getElementById("results").appendChild(node);
 
-    add_result(all_manga.slice(page, p2));
+    add_result(all_manga.splice(0, 2));
 
-    localStorage.setItem("load_more_last", p2);
+    localStorage.setItem("load_more_page", page + 1);
+
+    if (all_anime.length == 0 || all_manga.length == 0) {
+        document.getElementById("line").remove();
+    }
+
 }
 
 function search() {
@@ -44,19 +54,21 @@ function search() {
         
         all_anime = [];
         all_manga = [];
-
+        
         results["data"]["anime"]["results"].forEach(data => {
             all_anime.push(data);
         });
         results["data"]["manga"]["results"].forEach(data => {
             all_manga.push(data);
         });
+
+        max_len = all_anime.length + all_manga.length;
         
         //localStorage.setItem("all_anime", all_anime);
         //localStorage.setItem("all_manga", all_manga);
-        localStorage.setItem("load_more_last", 0);
+        localStorage.setItem("load_more_page", 1);
 
-        display_results(0);
+        display_results(1);
     });
 }
 
@@ -101,3 +113,10 @@ function elipsis(string, max_length) {
     }
   }
   
+function isOdd(num) {
+    if ((num % 2) == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
