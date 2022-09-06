@@ -12,4 +12,5 @@ todo:
 - make docs 
 - PHONE CSS COMPATIBILITY
 - account system??? wtf.
+- migrate to MONGODB for lists
 
