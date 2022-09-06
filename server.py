@@ -8,6 +8,14 @@ template_dir = os.path.abspath('frontend/')
 static_dir = os.path.abspath('frontend/static')
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir) 
 
+def conf(key):
+    try:
+        with open("config.json") as f:
+            li_conf = json.load(f)
+        return li_conf.get(key)
+    except:
+        pass
+
 #################################
 # WEB SERVER
 
@@ -48,7 +56,7 @@ def latest_activity(id, progress, media):
     
     data = {"media_id": id, "progress": progress, "media": media, "title": title}
     
-    with open(f'data/xeny/latest.json', 'w', encoding="utf8") as f1:
+    with open(f'data/latest.json', 'w', encoding="utf8") as f1:
         json.dump({"id": id, "progress": progress, "media": media, "title": title}, f1, indent=4)
         f1.close()
 
@@ -57,7 +65,7 @@ def latest_activity(id, progress, media):
 
 @app.route('/api/v1/latest')
 def latest():
-    f = open('data/xeny/latest.json', encoding="utf8"); data = json.load(f)
+    f = open('data/latest.json', encoding="utf8"); data = json.load(f)
     resp = Response(json.dumps(data))
     f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -66,7 +74,7 @@ def latest():
 
 @app.route('/api/v1/list/anime')
 def anime_list():
-    f = open('data/xeny/anime.json', encoding="utf8"); data = json.load(f)
+    f = open('data/anime.json', encoding="utf8"); data = json.load(f)
     resp = Response(json.dumps(data))
     f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -75,7 +83,7 @@ def anime_list():
 
 @app.route('/api/v1/list/manga')
 def manga_list():
-    f = open('data/xeny/manga.json', encoding="utf8"); data = json.load(f)
+    f = open('data/manga.json', encoding="utf8"); data = json.load(f)
     resp = Response(json.dumps(data))
     f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -101,7 +109,7 @@ def edit():
         #status = data['status'] for dropdown watching, completed, onhold, dropped
 
         
-        with open(f'data/xeny/{media_type}.json', encoding="utf8") as f: local = json.load(f)
+        with open(f'data/{media_type}.json', encoding="utf8") as f: local = json.load(f)
         for item in local:
             if item['media_id'] == media_id:
                 item['progress'] = progress
@@ -110,7 +118,7 @@ def edit():
                 threading.Thread(target=latest_activity, args=[item['media_id'], item['progress'], media_type]).start()
                 break
 
-        with open(f'data/xeny/{media_type}.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
+        with open(f'data/{media_type}.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
         f.close()
 
 
@@ -140,7 +148,7 @@ def add_media():
         
         feeds = []
 
-        with open(f"data/xeny/{media_type}.json", "r") as f:
+        with open(f"data/{media_type}.json", "r") as f:
             data = json.load(f)
             for x in data:
                 feeds.append(x)
@@ -160,7 +168,7 @@ def add_media():
         
         feeds.append(_dict)
 
-        with open(f"data/xeny/{media_type}.json", 'w') as json_file:
+        with open(f"data/{media_type}.json", 'w') as json_file:
             json.dump(feeds, json_file, 
                             indent=4,  
                             separators=(',',': '))

@@ -8,6 +8,6 @@ todo:
 - add navbar?? home, anime, manga, new entry
 - delete my heroku endpoint & ADD API KEYS 
 - maybe add stars for scoring?? 1-5
-- add password auth for exposed instances (like swizzin)
+- add password auth for exposed instances (like swizzin) LOGIN SYSTEM 
 - make docs 
 - PHONE CSS COMPATIBILITY
