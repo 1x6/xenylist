@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <title>xenylist - Add Entry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/add.css') }}">
-  <script src="{{ url_for('static', filename='js/add.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/add.js') }}"></script>
 </head>
 <body>
-    
+    <ul id="navbar" class="topnav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/anime">Anime List</a></li>
+        <li><a href="/manga">Manga List</a></li>
+        <li><a href="/add">Add Entry</a></li>
+      </ul>
+
     <div id="search-box" class="flex-container">
-        <input type="text" name="search_box" id="search_box" class="search-box flex-child">
+        <input type="text" name="search_box" id="search_box" class="add-search-box flex-child">
         <button class="search-button flex-child" id="search_button" onclick="search()">
             <i class="fas fa-search fa-4x"></i>
         </button>

@@ -1,8 +1,14 @@
+/* switched to the AniList font LOL
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; } 
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
+*/
+
+@import url('https://overpass-30e2.kxcdn.com/overpass.css');
+html { font-family: 'Overpass', sans-serif; }
+
 
 :root {
     --accent: #89b4fa;
@@ -11,9 +17,10 @@ html { font-family: 'Inter', sans-serif; }
 
 body {
     background-color: #0b1622;
-    font-family: Inter !important;
+    font-family: Overpass !important;
     color: var(--font);
 }
+
 
 
 .fa-solid {
@@ -98,6 +105,15 @@ td:nth-child(1) {
   width: 5%;
 }
 
+.title {
+  transition: 0.5s ease-in-out;
+}
+
+.title:hover {
+  color: var(--accent);
+  transition: 0.5s ease-in-out;
+}
+
 .search-box {
   width: 110px;
   height: 20px;
@@ -114,12 +130,11 @@ td:nth-child(1) {
   outline: none;
 }
 
-input {
+#search input {
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
 }
-input::placeholder {
-font: 15px 'Inter', sans-serif;
+#search input::placeholder {
+font: 15px;
 }
 
 @media screen and (max-width: 500px) {
@@ -154,4 +169,52 @@ font: 15px 'Inter', sans-serif;
   color: var(--accent);
   transition: ease 0.7s;
   cursor: pointer;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: -8px;
+  overflow: hidden;
+  background-color: #09121b;
+  padding-left: 20%;
+  padding-right: 20%;
+  position: sticky;
+  transition: 0.5s ease-in-out;
+
+}
+
+
+ul.topnav li {
+  float: left;
+  width: 25%;
+}
+
+ul.topnav li a {
+  display: block;
+  color: #8b99a9;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+ul.topnav li a:hover {
+  color: var(--accent);
+  transition: 0.3s ease;
+}
+
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {
+    float: none;
+    width: 100%;
+  }
+  ul.topnav {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }

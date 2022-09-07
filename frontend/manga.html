@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
+  <ul id="navbar" class="topnav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/anime">Anime List</a></li>
+    <li><a href="/manga">Manga List</a></li>
+    <li><a href="/add">Add Entry</a></li>
+  </ul>
   <div class="main">
-        <h1 class="headers">Manga List</h1>
+        
 
           <div style="display: inline" class="search-container">
             <input type="text" id="search" class="search-box" onkeyup="search()" placeholder="Search...">

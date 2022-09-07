@@ -7,7 +7,7 @@ function load_more() {
         //search(page);
         display_results(page);
     };
-    console.log(all_anime.length + all_manga.length);
+    
     if (all_anime.length + all_manga.length < 1) {
         document.getElementById("load_more").style.display = "none";
     } else {
@@ -20,7 +20,16 @@ function display_results(page) {
     var an = all_anime.length
     var ma = all_manga.length
 
-
+    var loa = document.getElementById("load_more");
+        if (loa == null) {
+            var node = document.createElement("button");
+            node.setAttribute("id", "load_more");
+            node.setAttribute("onclick", "load_more();");
+            node.setAttribute("class", "load-more");
+            node.innerHTML = "Load more";
+            document.getElementById("results").appendChild(node);
+        }
+    
     if (max_len < 4) {
         document.getElementById("load_more").style.display = "none";
     } else {
@@ -29,7 +38,7 @@ function display_results(page) {
 
     page = parseInt(page);
 
-    document.getElementById("search-box").style = "transform: translate(-50%, -350%);"
+    document.getElementById("search-box").style = "transform: translate(-50%, -250%);"
     
     document.getElementById("results-container").style = "display: flex;"
 

@@ -1,22 +1,10 @@
-
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-html { font-family: 'Inter var', sans-serif; }
-}
-body {
-    background-color: #0b1622;
-    display: inline;
-    color: #8b9aa9;
-    font-family: 'Inter', sans-serif;
-}
 .flex-container {
     display: flex;
     position: absolute;
     left: 50%;
     top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -25%);
+    transform: translate(-50%, -25%);
     transition: 0.2s;
 }
 .results-container {
@@ -37,6 +25,7 @@ body {
     display: inline-block;
     overflow: hidden;
     position: relative;
+    width: 50vw;
 }
 .result-bg {
     background-repeat: no-repeat;
@@ -67,8 +56,8 @@ body {
 .flex-child:first-child {
     margin-right: 20px;
 } 
-.search-box {
-    width: 500px;
+.add-search-box {
+    width: 50vw;
     height: 100px;
     border: #151f2e solid 5px;
     border-radius: 10px;
@@ -82,7 +71,7 @@ body {
 }
 .search-button {
     display: inline-block;
-    width: 100px;
+    width: fit-content;
     height: 130px;
     border: #151f2e solid 5px;
     border-radius: 10px;
@@ -98,12 +87,13 @@ body {
     cursor: pointer;
 }
 input {
-    font-size: 40px;
-    font-family: 'Inter', sans-serif;
+    font: 40px 'Overpass' !important;
 }
+
 input::placeholder {
-font: 40px 'Inter', sans-serif;
+    font: 40px 'Overpass', sans-serif !important;
 }
+
 
 .CH-flex-container {
     display: flex;
@@ -141,9 +131,19 @@ hr {
     text-align: center;
     padding: 20px;
     transition: ease 0.7s;
+    background-color: #0b1622;
+    font-family: Overpass;
+    color: #95a3b3;
+    outline: none;
+    border: none;
+    font-size: 15px;
 }
 
 .load-more:hover {
     color: #08abff;
     transition: ease 0.7s;
+}
+
+.load-more:focus {
+    outline: none;
 }
