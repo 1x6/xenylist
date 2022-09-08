@@ -11,7 +11,7 @@ html { font-family: 'Overpass', sans-serif; }
 
 
 :root {
-    --accent: #89b4fa;
+    --accent: #5193fd;
     --font: #9fadbd;
 }
 
@@ -206,6 +206,9 @@ ul.topnav li a:hover {
   transition: 0.3s ease;
 }
 
+ul.topnav li .active {
+  color: var(--accent);
+}
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
