@@ -3,10 +3,8 @@ import os
 import requests
 import json
 import threading
-
-template_dir = os.path.abspath('frontend/')
-static_dir = os.path.abspath('frontend/static')
-app = Flask(__name__, template_folder=template_dir, static_folder=static_dir) 
+import pymongo
+import time
 
 def conf(key):
     try:
@@ -15,6 +13,14 @@ def conf(key):
         return li_conf.get(key)
     except:
         pass
+
+template_dir = os.path.abspath('frontend/')
+static_dir = os.path.abspath('frontend/static')
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir) 
+
+myclient = pymongo.MongoClient(conf("mongodb"))
+#mydb = myclient["lists"]
+#mycol = mydb["anime"]
 
 #################################
 # WEB SERVER
@@ -54,43 +60,56 @@ def latest_activity(id, progress, media):
     if resp["data"]["Media"]["title"]["english"] == None:
         title = resp["media"]["title"]["romaji"]
     
-    data = {"media_id": id, "progress": progress, "media": media, "title": title}
+    data = {"media_id": id, "progress": progress, "media": media, "title": title, "time": round(time.time()*1000)}
     
-    with open(f'data/latest.json', 'w', encoding="utf8") as f1:
-        json.dump({"id": id, "progress": progress, "media": media, "title": title}, f1, indent=4)
-        f1.close()
+    mydb = myclient["latest"]
+    mycol = mydb["latest"]
+    query = {}
+    newval = {"$set": data}
+    mycol.update_one(query, newval, upsert=True)
 
-    #send2proxy = requests.post("", json=data)
-        
 
 @app.route('/api/v1/latest')
 def latest():
-    f = open('data/latest.json', encoding="utf8"); data = json.load(f)
-    resp = Response(json.dumps(data))
-    f.close()
+    mydb = myclient["latest"]
+    mycol = mydb["latest"]
+    data = mycol.find({})
+    l = []
+    for x in data:
+        x.pop("_id")
+        l.append(x)
+    resp = Response(json.dumps(l))
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
 @app.route('/api/v1/list/anime')
 def anime_list():
-    f = open('data/anime.json', encoding="utf8"); data = json.load(f)
+    mydb = myclient["lists"]
+    mycol = mydb["anime"]
+    data = []
+    for x in mycol.find():
+        x.pop("_id")
+        data.append(x)
     resp = Response(json.dumps(data))
-    f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
 @app.route('/api/v1/list/manga')
 def manga_list():
-    f = open('data/manga.json', encoding="utf8"); data = json.load(f)
+    mydb = myclient["lists"]
+    mycol = mydb["manga"]
+    data = []
+    for x in mycol.find():
+        x.pop("_id")
+        data.append(x)
     resp = Response(json.dumps(data))
-    f.close()
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
-@app.route('/api/v1/edit', methods=['POST', 'OPTIONS'])
+@app.route('/api/v1/edit', methods=['POST', 'OPTIONS', 'DELETE'])
 def edit():
     if request.method == 'OPTIONS':
         resp = Response('')
@@ -100,27 +119,44 @@ def edit():
         return resp
     elif request.method == 'POST':
         data = request.get_json()
-        # make so u can do deletr request and add actions to specify what to do
         media_type = data['media_type']
         media_id = data['media_id']
         progress = data['progress']
         score = data['score']
         status = data['status']
-        #status = data['status'] for dropdown watching, completed, onhold, dropped
+                
+        if media_type == "anime":
+            mydb = myclient["lists"]
+            mycol = mydb["anime"]
+            myquery = { "media_id": media_id }
+            newvalues = { "$set": { "progress": progress, "score": score, "status": status } }
+            mycol.update_one(myquery, newvalues)
+            threading.Thread(target=latest_activity, args=[media_id, progress, media_type]).start()
 
-        
-        with open(f'data/{media_type}.json', encoding="utf8") as f: local = json.load(f)
-        for item in local:
-            if item['media_id'] == media_id:
-                item['progress'] = progress
-                item['score'] = score
-                item['status'] = status
-                threading.Thread(target=latest_activity, args=[item['media_id'], item['progress'], media_type]).start()
-                break
+        elif media_type == "manga":
+            mydb = myclient["lists"]
+            mycol = mydb["manga"]
+            myquery = { "media_id": media_id }
+            newvalues = { "$set": { "progress": progress, "score": score, "status": status } }
+            mycol.update_one(myquery, newvalues)
+            threading.Thread(target=latest_activity, args=[media_id, progress, media_type]).start()
 
-        with open(f'data/{media_type}.json', 'w', encoding="utf8") as f1: json.dump(local, f1, indent=4); f1.close()
-        f.close()
+    elif request.method == 'DELETE':
+        data = request.get_json()
+        media_type = data['media_type']
+        media_id = data['media_id']
 
+        if media_type == "anime":
+            mydb = myclient["lists"]
+            mycol = mydb["anime"]
+            myquery = { "media_id": media_id }
+            mycol.delete_one(myquery)
+            
+        elif media_type == "manga":
+            mydb = myclient["lists"]
+            mycol = mydb["manga"]
+            myquery = { "media_id": media_id }
+            mycol.delete_one(myquery)
 
     resp = Response(json.dumps({'success': True}))
     resp.headers['Access-Control-Allow-Origin'] = '*'
@@ -134,6 +170,7 @@ def add_media():
         resp.headers['Access-Control-Allow-Methods'] = 'POST'
         resp.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return resp
+
     elif request.method == 'POST':
         data = request.get_json()
         # make so u can do deletr request and add actions to specify what to do
@@ -146,15 +183,6 @@ def add_media():
         r = requests.post("https://graphql.anilist.co", json=postme)
         resp = r.json()
         
-        feeds = []
-
-        with open(f"data/{media_type}.json", "r") as f:
-            data = json.load(f)
-            for x in data:
-                feeds.append(x)
-
-        f.close()
-
         _dict = {}
 
         _dict["title"] = resp["data"]["Media"]["title"]["english"]
@@ -164,15 +192,21 @@ def add_media():
         _dict["status"] = "planning"
         _dict["score"] = 0
         _dict["progress"] = 0
+        if media_type == "anime":
+            _dict["total"] = resp["data"]["Media"]["episodes"]
+        elif media_type == "manga":
+            _dict["total"] = resp["data"]["Media"]["chapters"]
         _dict["image"] = resp["data"]["Media"]["coverImage"]["large"]
+        _dict["notes"] = ""
+        _dict["isAdult"] = resp["data"]["Media"]["isAdult"]
         
-        feeds.append(_dict)
-
-        with open(f"data/{media_type}.json", 'w') as json_file:
-            json.dump(feeds, json_file, 
-                            indent=4,  
-                            separators=(',',': '))
-        json_file.close()
+        mydb = myclient["lists"]
+        if media_type == "anime":
+            mycol = mydb["anime"]
+        elif media_type == "manga":
+            mycol = mydb["manga"]
+        
+        mycol.insert_one(_dict)
 
         resp = Response(json.dumps({'title': _dict["title"], "success": True}))
         resp.headers['Access-Control-Allow-Origin'] = '*'
