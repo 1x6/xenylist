@@ -35,6 +35,12 @@ body {
 
 .fa-solid:hover {
   color: var(--accent);
+  cursor: pointer;
+}
+
+.fa-star {
+  display: inline;
+  font-size: 15px;
 }
 
 @media (min-width: 1400px) {
@@ -134,7 +140,7 @@ td:nth-child(1) {
   font-size: 15px;
 }
 #search input::placeholder {
-font: 15px;
+font-size: 15px;
 }
 
 @media screen and (max-width: 500px) {

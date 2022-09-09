@@ -83,6 +83,13 @@ def latest():
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
+@app.route('/api/v1/rating_type')
+def rating_type():
+    resp = Response(json.dumps({"rating_type": conf("rating_type")}))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Content-Type'] = 'application/json'
+    return resp
+
 @app.route('/api/v1/list/anime')
 def anime_list():
     mydb = myclient["lists"]

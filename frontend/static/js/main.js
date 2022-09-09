@@ -33,6 +33,31 @@ function search() {
 }
 /* /////////////////////////// */
 
+var delete_entry = function(id) {
+  var r = confirm("Are you sure you want to delete this entry?");
+  if (r == true) {
+    fetch(endpoint + "edit", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"media_type": type, "media_id": id})
+    })
+  }
+};
+
+var get_rating_type = function() {
+  fetch(endpoint + "rating_type")
+    .then(response => response.json())
+    .then ((data) => {
+      console.log(data);
+      if (data.rating_type == "stars") {
+        rating_type = "stars";
+      } else {
+        rating_type = "ten";
+      }
+})}
+
 var edit_mode = function(row_id) {
   var status_cell = document.getElementById("status-" + row_id);
   let actual_status = status_cell.innerHTML;
@@ -41,6 +66,8 @@ var edit_mode = function(row_id) {
   var prog = row.cells[3];
   var score = row.cells[4];
   var edit_btn = row.cells[5];
+  row.insertCell(6).innerHTML = "<i onclick='delete_entry(" + row_id + ")' class='fa-solid fa-trash'></i>";
+  var delete_btn = row.cells[6];
   status.outerHTML = 
           `<td> 
             <select id='status-` + row_id + `'> 
@@ -70,10 +97,12 @@ var done_edit = function(row_id) {
   var prog = row.cells[3];
   var score = row.cells[4];
   var edit_btn = row.cells[5];
+  var delete_btn = row.cells[6];
   prog.setAttribute("contenteditable", "false");
   score.setAttribute("contenteditable", "false");
   status.outerHTML = "<td class='status' id='status-" + row_id + "'>" + capitalizeFirstLetter(status_fr) +"</td>";
   edit_btn.innerHTML = "<i onclick='edit_mode(" + row_id + ")' class='fa-solid fa-pencil'></i>";
+  delete_btn.remove();
   update_entry(row_id, prog.innerHTML.replace(/\D/g, ""), score.innerHTML.replace(/\D/g, ""), status_fr);
 }
 
@@ -127,11 +156,14 @@ function render_table(resp, table) {
     document.getElementById("title-" + row.id).setAttribute("style", "cursor: pointer");
     var status = row.insertCell(2).outerHTML = "<td id='status-" + row.id + "'>" + capitalizeFirstLetter(resp[i].status) + "</td>";
     var prog = row.insertCell(3).outerHTML = "<td class='center' id='progress-" + row.id + "'>" + resp[i].progress + "</td>";
-    var score = row.insertCell(4).outerHTML = "<td class='center' id='score-" + row.id + "'>" + resp[i].score + "</td>"; // get property with .name .progress .score on cars[i] which is json dict
+    if (rating_type == "stars") {
+      var score = row.insertCell(4).outerHTML = `<td class='center' id='score-${row.id}'>${resp[i].score} <i class='fa-solid fa-star'></i></td>`;
+    } else {
+      var score = row.insertCell(4).outerHTML = `<td class='center' id='score-${row.id}'>${resp[i].score}</td>`;
+    }
     var edit_btn = row.insertCell(5);
     edit_btn.innerHTML = "<i onclick='edit_mode(" + row.id + ")' class='fa-solid fa-pencil'></i>";
-    edit_btn.setAttribute("style", "cursor: pointer");
-  } 
+  }
 }
 
 
@@ -159,7 +191,9 @@ var get_list = function() {
   };
   
   // Get the new one.
+  get_rating_type();
   get_list();
+
   // Start the countdown.
   //setInterval(getList, 1000);
   

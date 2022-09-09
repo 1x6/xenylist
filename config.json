@@ -1,3 +1,5 @@
 {
-    "mongodb":""
+    "mongodb":"",
+    "rating_type":"stars",
+    "note1": "rating_type is either 'stars' or 'ten'"
 }
