@@ -1,14 +1,13 @@
 from ast import Import
 import pymongo, json
 import requests
-from scrape_anilist_list import MEDIA_TYPE
 from server import conf
 
 myclient = pymongo.MongoClient(conf("mongodb"))
-mydb = myclient["lists"]
+mydb = myclient["listsk"] # MAIN IS LISTS
 
 ANILIST_USER_ID = 5964458
-MEDIA_TYPE = "manga" # or "anime"
+MEDIA_TYPE = "anime" # or "anime"
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0'

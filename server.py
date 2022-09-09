@@ -68,7 +68,6 @@ def latest_activity(id, progress, media):
     newval = {"$set": data}
     mycol.update_one(query, newval, upsert=True)
 
-
 @app.route('/api/v1/latest')
 def latest():
     mydb = myclient["latest"]
@@ -116,7 +115,7 @@ def manga_list():
     resp.headers['Content-Type'] = 'application/json'
     return resp
 
-@app.route('/api/v1/edit', methods=['POST', 'OPTIONS', 'DELETE'])
+@app.route('/api/v1/edit', methods=['POST', 'OPTIONS'])
 def edit():
     if request.method == 'OPTIONS':
         resp = Response('')
@@ -148,26 +147,35 @@ def edit():
             mycol.update_one(myquery, newvalues)
             threading.Thread(target=latest_activity, args=[media_id, progress, media_type]).start()
 
-    elif request.method == 'DELETE':
-        data = request.get_json()
-        media_type = data['media_type']
-        media_id = data['media_id']
+        resp = Response(json.dumps({"success": True}))
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
 
-        if media_type == "anime":
-            mydb = myclient["lists"]
-            mycol = mydb["anime"]
-            myquery = { "media_id": media_id }
-            mycol.delete_one(myquery)
-            
-        elif media_type == "manga":
-            mydb = myclient["lists"]
-            mycol = mydb["manga"]
-            myquery = { "media_id": media_id }
-            mycol.delete_one(myquery)
+    
+@app.route('/api/v1/delete', methods=['POST'])
+def delete():
+    
+    data = request.get_json()
+    media_type = data['media_type']
+    media_id = data['media_id']
 
-    resp = Response(json.dumps({'success': True}))
+    if media_type == "anime":
+        mydb = myclient["lists"]
+        mycol = mydb["anime"]
+        myquery = { "media_id": media_id }
+        mycol.delete_one(myquery)
+        
+    elif media_type == "manga":
+        mydb = myclient["lists"]
+        mycol = mydb["manga"]
+        myquery = { "media_id": media_id }
+        mycol.delete_one(myquery)
+
+    resp = Response(json.dumps({"success": True}))
     resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Content-Type'] = 'application/json'
     return resp
+    
 
 @app.route('/api/v1/add_media', methods=['POST', 'OPTIONS'])
 def add_media():

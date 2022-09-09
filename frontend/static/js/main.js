@@ -36,32 +36,31 @@ function search() {
 var delete_entry = function(id) {
   var r = confirm("Are you sure you want to delete this entry?");
   if (r == true) {
-    fetch(endpoint + "edit", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({"media_type": type, "media_id": id})
-    })
-    location.reload();
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", endpoint + "delete");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify({"media_type": type, "media_id": id}));
+    // get xmlhttp response code
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        location.reload();
+      }
+    }
   }
 };
 
+
 var get_rating_type = function() {
-  fetch(endpoint + "rating_type")
-    .then(response => response.json())
-    .then ((data) => {
-      console.log(data);
-      if (data.rating_type == "stars") {
+  $.getJSON(endpoint + "rating_type", function(resp, status){
+  
+      console.log(resp);
+      if (resp.rating_type == "stars") {
         rating_type = "stars";
       } else {
         rating_type = "ten";
       }
     })
-    .catch((error) => {
-      console.log(error);
-      rating_type = "ten";
-    })
+    
 }
 
 var edit_mode = function(row_id) {
@@ -174,9 +173,7 @@ function render_table(resp, table) {
 
 
 var get_list = function() {
-  //var type = document.getElementById("mediaType").value;
-  // add media type shit
-
+    
   $.getJSON(endpoint + "list/" + type, function(resp, status){
       //alert("Data: " + resp + "\nStatus: " + status);
       var table = document.getElementById("mediaTable");
@@ -197,8 +194,11 @@ var get_list = function() {
   };
   
   // Get the new one.
-  get_rating_type();
-  get_list();
+  window.addEventListener('load', function() {
+    get_rating_type();
+    get_list();
+  });
+
 
   // Start the countdown.
   //setInterval(getList, 1000);
