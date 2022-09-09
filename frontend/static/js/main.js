@@ -56,7 +56,12 @@ var get_rating_type = function() {
       } else {
         rating_type = "ten";
       }
-})}
+    })
+    .catch((error) => {
+      console.log(error);
+      rating_type = "ten";
+    })
+}
 
 var edit_mode = function(row_id) {
   var status_cell = document.getElementById("status-" + row_id);
