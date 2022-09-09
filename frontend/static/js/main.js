@@ -43,6 +43,7 @@ var delete_entry = function(id) {
       },
       body: JSON.stringify({"media_type": type, "media_id": id})
     })
+    location.reload();
   }
 };
 
