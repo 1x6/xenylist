@@ -41,8 +41,8 @@ I run this on a raspberry pi on my local network, so no bad actors can touch it.
 - Improved CSS
 - Account system (?)
 
-## Disclaimer
- Stored list data is scraped from AniList. This may be against their API terms of service as *xenylist* could be considered as a 'competing noncomplementary services of the same nature'. Even so, what are they going to do? IP ban you from their API? 🙀
+## Disclaimers
+No copyright infringement intended with the name or logo of 'xenylist'. Stored list data is scraped from AniList. This may be against their API terms of service as *xenylist* could be considered as a 'competing noncomplementary services of the same nature'. Even so, what are they going to do? IP ban you from their API? 🙀
 
 As always, the standard applies:
 > USE THis AT YoUR OwN riSk. thIS waS madE fOR eDUCatiOnaL pURPOseS.
