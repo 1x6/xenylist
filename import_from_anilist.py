@@ -1,5 +1,4 @@
-from ast import Import
-import pymongo, json
+import pymongo
 import requests
 from server import conf
 
@@ -19,7 +18,7 @@ rj = response.json()
 
 feeds = []
 
-for i in range(len(rj['data']['MediaListCollection']['lists'])):
+for i in enumerate(rj['data']['MediaListCollection']['lists']):
     for item in rj["data"]["MediaListCollection"]["lists"][i]["entries"]:
         dict_ = {}
         print(item)

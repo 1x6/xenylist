@@ -15,10 +15,10 @@ function capitalizeFirstLetter(string) {
 /* credit to w3schools for this */
 function search() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("mediaTable");
-  tr = table.getElementsByTagName("tr");
+  var input = document.getElementById("search");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("mediaTable");
+  var tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {
@@ -66,7 +66,7 @@ var get_rating_type = function() {
 var edit_mode = function(row_id) {
   var status_cell = document.getElementById("status-" + row_id);
   let actual_status = status_cell.innerHTML;
-  row = document.getElementById(row_id);
+  var row = document.getElementById(row_id);
   var status = row.cells[2];
   var prog = row.cells[3];
   var score = row.cells[4];
@@ -131,12 +131,12 @@ var hide_except = function(type) {
   var table = document.getElementById("mediaTable");
   var rows = table.rows;
   for (var i = 0; i < rows.length; i++) {
-    if (rows[i].id != "headers") {
+    if (rows[i].id !== "headers") {
       if (type == "all") {
         rows[i].style.display = "";
       }
       else {
-      if (rows[i].className != type) {
+      if (rows[i].className !== type) {
         rows[i].style.display = "none";
       } else {
         rows[i].style.display = "";
@@ -149,7 +149,7 @@ var hide_except = function(type) {
 function render_table(resp, table) {
   for (let i = 0; i < resp.length; i++) {
 
-    row = table.insertRow(i+1);
+    var row = table.insertRow(i+1);
     row.id = resp[i].media_id;
     row.className = resp[i].status.toLowerCase(); 
     //var type = resp[i].media_type; do this maybe
@@ -161,7 +161,7 @@ function render_table(resp, table) {
     document.getElementById("title-" + row.id).setAttribute("style", "cursor: pointer");
     var status = row.insertCell(2).outerHTML = "<td id='status-" + row.id + "'>" + capitalizeFirstLetter(resp[i].status) + "</td>";
     var prog = row.insertCell(3).outerHTML = "<td class='center' id='progress-" + row.id + "'>" + resp[i].progress + "</td>";
-    if (rating_type == "stars") {
+    if (rating_type === "stars") {
       var score = row.insertCell(4).outerHTML = `<td class='center' id='score-${row.id}'>${resp[i].score} <i class='fa-solid fa-star'></i></td>`;
     } else {
       var score = row.insertCell(4).outerHTML = `<td class='center' id='score-${row.id}'>${resp[i].score}</td>`;
@@ -180,11 +180,11 @@ var get_list = function() {
 
       headers = table.insertRow(0);
       headers.id = "headers";
-      img = headers.insertCell(0);
-      title = headers.insertCell(1).outerHTML = "<th align='left'>Title</th>";
-      status = headers.insertCell(2).outerHTML = "<th align='left'>Status</th>";
-      progress = headers.insertCell(3).outerHTML = "<th>Progress</th>";
-      score = headers.insertCell(4).outerHTML = "<th>Score</th>";
+      headers.insertCell(0);
+      headers.insertCell(1).outerHTML = "<th align='left'>Title</th>";
+      headers.insertCell(2).outerHTML = "<th align='left'>Status</th>";
+      headers.insertCell(3).outerHTML = "<th>Progress</th>";
+      headers.insertCell(4).outerHTML = "<th>Score</th>";
 
       ///////////////////////////////////
       render_table(resp, table);

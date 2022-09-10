@@ -21,7 +21,7 @@ function display_results(page) {
     var ma = all_manga.length
 
     var loa = document.getElementById("load_more");
-        if (loa == null) {
+        if (loa === null) {
             var node = document.createElement("button");
             node.setAttribute("id", "load_more");
             node.setAttribute("onclick", "load_more();");
@@ -98,7 +98,7 @@ var add_result = function(data) {
         var node = document.createElement("div"); 
         node.className = "result";
 
-        const title = data[i]["title"]["english"] != null ? data[i]["title"]["english"] : data[i]["title"]["romaji"]
+        const title = data[i]["title"]["english"] !== null ? data[i]["title"]["english"] : data[i]["title"]["romaji"]
         node.setAttribute("onclick", `ask_confirm('${title}', '${data[i]["id"]}', '${data[i]["type"].toLowerCase()}');`)
         const h2 = document.createElement("h2");
         h2.style = "z-index: 1; position: inherit;"
@@ -154,10 +154,3 @@ function elipsis(string, max_length) {
     }
   }
   
-function isOdd(num) {
-    if ((num % 2) == 1) {
-        return true;
-    } else {
-        return false;
-    }
-}

@@ -1,5 +1,5 @@
 {
     "mongodb":"",
-    "rating_type":"stars",
-    "note1": "rating_type is either 'stars' or 'ten'"
+    "allowed_origins": "*",
+    "rating_type":"stars"
 }

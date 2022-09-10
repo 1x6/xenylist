@@ -8,7 +8,7 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 
-  if (window.pageYOffset == 0) {
+  if (window.pageYOffset === 0) {
     document.getElementById("navbar").style.backgroundColor = "#0b1622";
   } else {
     document.getElementById("navbar").style.backgroundColor = "#09121b";
