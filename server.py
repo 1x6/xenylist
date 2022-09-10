@@ -67,7 +67,7 @@ def latest_activity(id, progress, media):
     resp = r.json()
 
     title = resp["data"]["Media"]["title"]["english"]
-    if resp["data"]["Media"]["title"]["english"] == None:
+    if resp["data"]["Media"]["title"]["english"] is None:
         title = resp["media"]["title"]["romaji"]
 
     data = {
@@ -216,7 +216,7 @@ def add_media():
     _dict = {}
 
     _dict["title"] = resp["data"]["Media"]["title"]["english"]
-    if resp["data"]["Media"]["title"]["english"] == None:
+    if resp["data"]["Media"]["title"]["english"] is None:
         _dict["title"] = resp["data"]["Media"]["title"]["romaji"]
     _dict["media_id"] = resp["data"]["Media"]["id"]
     _dict["status"] = "planning"
