@@ -38,7 +38,7 @@ for i in enumerate(rj['data']['MediaListCollection']['lists']):
         dict_["isAdult"] = item["media"]["isAdult"]
         feeds.append(dict_)
         print(dict_)
-        
+
 
 mycol = mydb[MEDIA_TYPE]
 

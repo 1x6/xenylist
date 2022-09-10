@@ -58,9 +58,9 @@ def latest_activity(id, progress, media):
     title = resp["data"]["Media"]["title"]["english"]
     if resp["data"]["Media"]["title"]["english"] == None:
         title = resp["media"]["title"]["romaji"]
-    
+
     data = {"media_id": id, "progress": progress, "media": media, "title": title, "time": round(time.time()*1000)}
-    
+
     mydb = myclient["latest"]
     mycol = mydb["latest"]
     query = {}
@@ -144,10 +144,10 @@ def edit():
     
     return resp
 
-    
+
 @app.route('/api/v1/delete', methods=['POST'])
 def delete():
-    
+
     data = request.get_json()
     media_type = data['media_type']
     media_id = data['media_id']
@@ -157,7 +157,7 @@ def delete():
         mycol = mydb["anime"]
         myquery = { "media_id": media_id }
         mycol.delete_one(myquery)
-        
+
     elif media_type == "manga":
         mydb = myclient["lists"]
         mycol = mydb["manga"]
@@ -168,7 +168,7 @@ def delete():
     
     resp.headers['Content-Type'] = 'application/json'
     return resp
-    
+
 
 @app.route('/api/v1/add_media', methods=['POST'])
 def add_media():
