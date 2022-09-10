@@ -23,7 +23,7 @@ for i in enumerate(rj['data']['MediaListCollection']['lists']):
         dict_ = {}
         print(item)
         dict_["title"] = item["media"]["title"]["english"]
-        if item["media"]["title"]["english"] == None:
+        if item["media"]["title"]["english"] is None:
             dict_["title"] = item["media"]["title"]["romaji"]
         dict_["media_id"] = item["mediaId"]
         dict_["status"] = item["status"].lower()
