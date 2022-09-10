@@ -184,22 +184,13 @@ def add_media():
     r = requests.post("https://graphql.anilist.co", json=postme)
     resp = r.json()
 
-    _dict = {}
-
-    _dict["title"] = resp["data"]["Media"]["title"]["english"]
+    _dict = {"title": resp["data"]["Media"]["title"]["english"], "media_id": resp["data"]["Media"]["id"], "status": "planning", "score": 0, "progress": 0, "image": resp["data"]["Media"]["coverImage"]["large"], "notes": "", "isAdult": resp["data"]["Media"]["isAdult"]}
     if resp["data"]["Media"]["title"]["english"] == None:
         _dict["title"] = resp["data"]["Media"]["title"]["romaji"]
-    _dict["media_id"] = resp["data"]["Media"]["id"]
-    _dict["status"] = "planning"
-    _dict["score"] = 0
-    _dict["progress"] = 0
     if media_type == "anime":
         _dict["total"] = resp["data"]["Media"]["episodes"]
     elif media_type == "manga":
         _dict["total"] = resp["data"]["Media"]["chapters"]
-    _dict["image"] = resp["data"]["Media"]["coverImage"]["large"]
-    _dict["notes"] = ""
-    _dict["isAdult"] = resp["data"]["Media"]["isAdult"]
 
     mydb = myclient["lists"]
     if media_type == "anime":
