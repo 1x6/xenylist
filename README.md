@@ -29,14 +29,14 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
 ## Support
 If you have questions or want reasonable support, drop me a DM on discord @ `xeny#0095`.
 
-### Other info
+## Other info
 If you are running this on a cloud server, consider adding password protection using nginx. authentication coming eventually.
 
 For SSL, you can use the Cloudflare proxying feature, which automatically provisions a free SSL cert. You can also use certbot if you'd prefer that. 
 
 I run this on a raspberry pi on my local network, so no bad actors can touch it.
 
-### Todo:
+## Todo:
 - Password authentication for exposed instances
 - Improved CSS
 - Account system (?)
