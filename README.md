@@ -23,6 +23,9 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
  - Run `server.py`
  - Done!
 
+## Support
+If you have questions or want reasonable support, drop me a DM on discord @ `xeny#0095`.
+
 ### Other info
 If you are running this on a cloud server, consider adding password protection using nginx. authentication coming eventually.
 
