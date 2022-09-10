@@ -10,13 +10,11 @@ def create_user(username, password):
     for x in mycol.find({"username": username}):
         if x["username"] == username:
             return False
-        else:
-            mycol.insert_one(user)
-            return True
+        mycol.insert_one(user)
+        return True
 
 def check_user(username, password):
     user = mycol.find_one({"username": username})
     if user:
         return user['password'] == hashlib.sha256(password.encode('utf-8')).hexdigest()
-    else:
-        return False
+    return False
