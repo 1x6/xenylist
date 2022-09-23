@@ -99,7 +99,7 @@ var add_result = function(data) {
         node.className = "result";
 
         const title = data[i]["title"]["english"] !== null ? data[i]["title"]["english"] : data[i]["title"]["romaji"]
-        node.setAttribute("onclick", `ask_confirm('${title}', '${data[i]["id"]}', '${data[i]["type"].toLowerCase()}');`)
+        node.setAttribute("onclick", `ask_confirm(\"${title}\", \"${data[i]["id"]}\", \"${data[i]["type"].toLowerCase()}\");`)
         const h2 = document.createElement("h2");
         h2.style = "z-index: 1; position: inherit;"
         h2.innerHTML = elipsis(title, 40);
