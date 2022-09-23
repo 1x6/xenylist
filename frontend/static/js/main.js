@@ -146,6 +146,28 @@ var hide_except = function(type) {
 }
 };
 
+var show_count = function(type) {
+  var table = document.getElementById("mediaTable");
+  var rows = table.rows;
+  var elem = document.getElementById(type);
+  
+  
+  if (type === "all") {
+    elem.innerHTML = `${capitalizeFirstLetter(type)} (${(rows.length - 1).toString()})`
+  } else {
+    var count = 0;
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].id !== "headers") {
+        if (rows[i].className == type) {
+          count++;
+        }
+      }
+    }
+    elem.innerHTML = `${capitalizeFirstLetter(type)} (${(count).toString()})` //elem.innerHTML + (count).toString()
+  }
+}
+    
+
 function render_table(resp, table) {
   for (let i = 0; i < resp.length; i++) {
 
@@ -190,16 +212,17 @@ var get_list = function() {
       render_table(resp, table);
       filter_buttons();
       hide_except("current");
+      types = ["current", "completed", "paused", "dropped", "planning", "all"];
+      for (let i = 0; i < types.length; i++) {
+        show_count(types[i]);
+      }
     });
   };
   
   // Get the new one.
-  window.addEventListener('load', function() {
-    get_rating_type();
-    get_list();
-  });
-
-
-  // Start the countdown.
-  //setInterval(getList, 1000);
+window.addEventListener('load', function() {
+  get_rating_type();
+  get_list();
   
+});
+
