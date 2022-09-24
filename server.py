@@ -103,7 +103,6 @@ def latest():
 @app.route("/api/v1/rating_type")
 def rating_type():
     resp = Response(json.dumps({"rating_type": conf("rating_type")}))
-
     resp.headers["Content-Type"] = "application/json"
     return resp
 
@@ -117,7 +116,6 @@ def anime_list():
         x.pop("_id")
         data.append(x)
     resp = Response(json.dumps(data))
-
     resp.headers["Content-Type"] = "application/json"
     return resp
 
@@ -131,7 +129,6 @@ def manga_list():
         x.pop("_id")
         data.append(x)
     resp = Response(json.dumps(data))
-
     resp.headers["Content-Type"] = "application/json"
     return resp
 
@@ -170,7 +167,6 @@ def edit():
         ).start()
 
     resp = Response(json.dumps({"success": True}))
-
     return resp
 
 
@@ -193,7 +189,6 @@ def delete():
         mycol.delete_one(myquery)
 
     resp = Response(json.dumps({"success": True}))
-
     resp.headers["Content-Type"] = "application/json"
     return resp
 
@@ -204,6 +199,21 @@ def add_media():
     # make so u can do deletr request and add actions to specify what to do
     media_id = data["media_id"]
     media_type = data["media_type"]
+
+    if media_type == "anime":
+        mycol = myclient["lists"]["anime"]
+        query = {"media_id": media_id}
+        if mycol.find_one(query) is not None:
+            resp = Response(json.dumps({"error": "Already in list"}))
+            resp.headers["Content-Type"] = "application/json"
+            return resp
+    if media_type == "manga":
+        mycol = myclient["lists"]["manga"]
+        query = {"media_id": media_id}
+        if mycol.find_one(query) is not None:
+            resp = Response(json.dumps({"error": "Already in list"}))
+            resp.headers["Content-Type"] = "application/json"
+            return resp
 
     postme = {
         "query": "query media($id:Int,$type:MediaType,$isAdult:Boolean){Media(id:$id,type:$type,isAdult:$isAdult){id title{userPreferred romaji english native}coverImage{extraLarge large}bannerImage startDate{year month day}endDate{year month day}description season seasonYear type format status(version:2)episodes duration chapters volumes genres synonyms source(version:3)isAdult isLocked meanScore averageScore popularity favourites isFavouriteBlocked hashtag countryOfOrigin isLicensed isFavourite isRecommendationBlocked isFavouriteBlocked isReviewBlocked nextAiringEpisode{airingAt timeUntilAiring episode}relations{edges{id relationType(version:2)node{id title{userPreferred}format type status(version:2)bannerImage coverImage{large}}}}characterPreview:characters(perPage:6,sort:[ROLE,RELEVANCE,ID]){edges{id role name voiceActors(language:JAPANESE,sort:[RELEVANCE,ID]){id name{userPreferred}language:languageV2 image{large}}node{id name{userPreferred}image{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{id role node{id name{userPreferred}language:languageV2 image{large}}}}studios{edges{isMain node{id name}}}reviewPreview:reviews(perPage:2,sort:[RATING_DESC,ID]){pageInfo{total}nodes{id summary rating ratingAmount user{id name avatar{large}}}}recommendations(perPage:7,sort:[RATING_DESC,ID]){pageInfo{total}nodes{id rating userRating mediaRecommendation{id title{userPreferred}format type status(version:2)bannerImage coverImage{large}}user{id name avatar{large}}}}externalLinks{id site url type language color icon notes isDisabled}streamingEpisodes{site title thumbnail url}trailer{id site}rankings{id rank type format year season allTime context}tags{id name description rank isMediaSpoiler isGeneralSpoiler userId}mediaListEntry{id status score}stats{statusDistribution{status amount}scoreDistribution{score amount}}}}",
@@ -239,7 +249,6 @@ def add_media():
     mycol.insert_one(_dict)
 
     resp = Response(json.dumps({"title": _dict["title"], "success": True}))
-
     return resp
 
 
@@ -255,7 +264,6 @@ def search():
     r = requests.post("https://graphql.anilist.co", json=graphql)
 
     resp = Response(json.dumps(r.json()))
-
     return resp
 
 
