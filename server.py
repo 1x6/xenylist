@@ -203,14 +203,14 @@ def add_media():
     if media_type == "anime":
         mycol = myclient["lists"]["anime"]
         query = {"media_id": media_id}
-        if mycol.find_one(query) is not None:
+        if mycol.find_one(query) != None:
             resp = Response(json.dumps({"error": "Already in list"}))
             resp.headers["Content-Type"] = "application/json"
             return resp
     if media_type == "manga":
         mycol = myclient["lists"]["manga"]
         query = {"media_id": media_id}
-        if mycol.find_one(query) is not None:
+        if mycol.find_one(query) != None:
             resp = Response(json.dumps({"error": "Already in list"}))
             resp.headers["Content-Type"] = "application/json"
             return resp
