@@ -42,6 +42,7 @@ I run this on a Raspberry Pi on my local network, so no bad actors can touch it.
 
 ## To-do:
 
+- If list already in list, change alert
 - Password authentication for exposed instances
 - Improved CSS
 - Account system (?)
