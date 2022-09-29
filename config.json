@@ -1,5 +1,5 @@
 {
-    "mongodb":"mongodb+srv://heroku:heroku123@cluster0.4ug9hl9.mongodb.net/test",
+    "mongodb":"",
     "allowed_origins": "*",
     "rating_type":"stars"
 }
