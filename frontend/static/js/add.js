@@ -1,4 +1,7 @@
-let endpoint = "http://localhost:2808/api/v1/";
+var loc = window.location.href
+let endpoint = loc.split("://")[0] + "://" + loc.split("/")[2] + "/api/"
+console.log("detected host: ", endpoint)
+
 
 function load_more() {
     if (localStorage.getItem("load_more_page") > 0) {

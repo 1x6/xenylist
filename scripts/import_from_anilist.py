@@ -1,12 +1,9 @@
-import pymongo
 import requests
 from server import conf
-
-myclient = pymongo.MongoClient(conf("mongodb"))
-mydb = myclient["listsk"]   # MAIN IS LISTS
+import database
 
 ANILIST_USER_ID = 5964458
-MEDIA_TYPE = "anime"   # or "anime"
+MEDIA_TYPE = "anime"   # anime or manga
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0"
@@ -44,9 +41,8 @@ for i in enumerate(rj["data"]["MediaListCollection"]["lists"]):
         feeds.append(dict_)
         print(dict_)
 
-
-mycol = mydb[MEDIA_TYPE]
-
 for x in feeds:
     print(x)
-    mycol.insert_one(x)
+    database.xenylist.initiate()
+    database.xenylist.add_media(MEDIA_TYPE, title, media_id, status, score, progress, total, image, notes, isAdult)
+

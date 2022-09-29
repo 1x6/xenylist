@@ -1,5 +1,7 @@
-let endpoint = "http://localhost:2808/api/v1/"
-// let endpoint = "http://192.168.1.52:2808/api/v1/";
+var loc = window.location.href
+let endpoint = loc.split("://")[0] + "://" + loc.split("/")[2] + "/api/v1/"
+console.log("detected host: ", endpoint)
+
 
 if (document.location.href.includes("anime")) {
   var type = "anime";
