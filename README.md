@@ -13,7 +13,6 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
 - Open source
 
 ## Images
-ddd
 <img src="https://user-images.githubusercontent.com/44981148/189462374-8232d4dc-8689-4af5-8134-7e4e480bcf15.png" />
 <img src="https://user-images.githubusercontent.com/44981148/189462434-669836df-baf8-4f35-bb6a-15db68af209f.png"/>
 
