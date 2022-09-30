@@ -21,7 +21,6 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
 - Clone the repo to a server (or your local machine)
   `git clone https://github.com/1x6/xenylist && cd xenylist`
 - Install sqlite3 `sudo apt install sqlite3`
-- Create a [free MongoDB database](https://www.mongodb.com/cloud/atlas/) and put the link in config.json [NOT REQUIRED, COMMENT OUT LATEST ACTIVITY CODE]
 - Import your lists using `scripts/import_from_anilist.py`
 - Install the python requirements with `pip install -r requirements.txt`
 - Run `server.py`
