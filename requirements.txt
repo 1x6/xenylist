@@ -2,5 +2,3 @@ flask
 flask_cors
 requests
 sqlite3
-pymongo
-pymongo[srv]

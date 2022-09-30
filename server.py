@@ -5,7 +5,10 @@ import requests
 import json
 import threading
 from database import xenylist
-from scripts import latest_activity
+
+PUSH_ACTIVITY_TO_MONGO = False
+if PUSH_ACTIVITY_TO_MONGO:
+    from scripts import latest_activity
 
 
 def conf(key):
@@ -88,15 +91,17 @@ def edit():
 
     if media_type == "anime":
         xenylist.update_anime(media_id, progress, score, status)
-        threading.Thread(
-            target=latest_activity.send, args=[media_id, progress, media_type]
-        ).start()
+        if PUSH_ACTIVITY_TO_MONGO:
+            threading.Thread(
+                target=latest_activity.send, args=[media_id, progress, media_type]
+            ).start()
 
     elif media_type == "manga":
         xenylist.update_anime(media_id, progress, score, status)
-        threading.Thread(
-            target=latest_activity.send, args=[media_id, progress, media_type]
-        ).start()
+        if PUSH_ACTIVITY_TO_MONGO:
+            threading.Thread(
+                target=latest_activity.send, args=[media_id, progress, media_type]
+            ).start()
 
     resp = Response(json.dumps({"success": True}))
     return resp
