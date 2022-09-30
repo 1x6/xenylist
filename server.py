@@ -4,9 +4,8 @@ import os
 import requests
 import json
 import threading
-import time
 from database import xenylist
-import pymongo
+from scripts import latest_activity
 
 
 def conf(key):
@@ -22,7 +21,6 @@ template_dir = os.path.abspath("frontend/")
 static_dir = os.path.abspath("frontend/static")
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 cors = CORS(app, resources={r"/api/*": {"origins": conf("allowed_origins")}})
-myclient = pymongo.MongoClient(conf("mongodb"))
 
 #################################
 # WEB SERVER
@@ -55,50 +53,6 @@ def favicon():
 
 #################################
 # API
-
-
-def latest_activity(id, progress, media):
-
-    postme = {
-        "query": "query media($id:Int,$type:MediaType,$isAdult:Boolean){Media(id:$id,type:$type,isAdult:$isAdult){id title{userPreferred romaji english native}coverImage{extraLarge large}bannerImage startDate{year month day}endDate{year month day}description season seasonYear type format status(version:2)episodes duration chapters volumes genres synonyms source(version:3)isAdult isLocked meanScore averageScore popularity favourites isFavouriteBlocked hashtag countryOfOrigin isLicensed isFavourite isRecommendationBlocked isFavouriteBlocked isReviewBlocked nextAiringEpisode{airingAt timeUntilAiring episode}relations{edges{id relationType(version:2)node{id title{userPreferred}format type status(version:2)bannerImage coverImage{large}}}}characterPreview:characters(perPage:6,sort:[ROLE,RELEVANCE,ID]){edges{id role name voiceActors(language:JAPANESE,sort:[RELEVANCE,ID]){id name{userPreferred}language:languageV2 image{large}}node{id name{userPreferred}image{large}}}}staffPreview:staff(perPage:8,sort:[RELEVANCE,ID]){edges{id role node{id name{userPreferred}language:languageV2 image{large}}}}studios{edges{isMain node{id name}}}reviewPreview:reviews(perPage:2,sort:[RATING_DESC,ID]){pageInfo{total}nodes{id summary rating ratingAmount user{id name avatar{large}}}}recommendations(perPage:7,sort:[RATING_DESC,ID]){pageInfo{total}nodes{id rating userRating mediaRecommendation{id title{userPreferred}format type status(version:2)bannerImage coverImage{large}}user{id name avatar{large}}}}externalLinks{id site url type language color icon notes isDisabled}streamingEpisodes{site title thumbnail url}trailer{id site}rankings{id rank type format year season allTime context}tags{id name description rank isMediaSpoiler isGeneralSpoiler userId}mediaListEntry{id status score}stats{statusDistribution{status amount}scoreDistribution{score amount}}}}",
-        "variables": {"id": id, "type": media.upper()},
-    }
-
-    r = requests.post("https://graphql.anilist.co", json=postme)
-    resp = r.json()
-
-    title = resp["data"]["Media"]["title"]["english"]
-    if resp["data"]["Media"]["title"]["english"] is None:
-        title = resp["media"]["title"]["romaji"]
-
-    data = {
-        "media_id": id,
-        "progress": progress,
-        "media": media,
-        "title": title,
-        "time": round(time.time() * 1000),
-    }
-
-    mydb = myclient["latest"]
-    mycol = mydb["latest"]
-    query = {}
-    newval = {"$set": data}
-    mycol.update_one(query, newval, upsert=True)
-
-
-@app.route("/api/latest")
-def latest():
-    mydb = myclient["latest"]
-    mycol = mydb["latest"]
-    data = mycol.find({})
-    l = []
-    for x in data:
-        x.pop("_id")
-        l.append(x)
-    resp = Response(json.dumps(l))
-    resp.headers["Content-Type"] = "application/json"
-    return resp
-
 
 @app.route("/api/rating_type")
 def rating_type():
@@ -135,13 +89,13 @@ def edit():
     if media_type == "anime":
         xenylist.update_anime(media_id, progress, score, status)
         threading.Thread(
-            target=latest_activity, args=[media_id, progress, media_type]
+            target=latest_activity.send, args=[media_id, progress, media_type]
         ).start()
 
     elif media_type == "manga":
         xenylist.update_anime(media_id, progress, score, status)
         threading.Thread(
-            target=latest_activity, args=[media_id, progress, media_type]
+            target=latest_activity.send, args=[media_id, progress, media_type]
         ).start()
 
     resp = Response(json.dumps({"success": True}))

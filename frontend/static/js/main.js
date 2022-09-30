@@ -1,5 +1,5 @@
 var loc = window.location.href
-let endpoint = loc.split("://")[0] + "://" + loc.split("/")[2] + "/api/v1/"
+let endpoint = loc.split("://")[0] + "://" + loc.split("/")[2] + "/api/"
 console.log("detected host: ", endpoint)
 
 
