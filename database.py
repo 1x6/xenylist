@@ -122,8 +122,3 @@ class xenylist:
             (title, media_id, status, score, progress, total, image, notes, isAdult,)
             )
         connection.commit()
-
-
-print(xenylist.check_anime_exists(137281))
-# 
-#CREATE TABLE anime(title text NOT NULL, media_id integer NOT NULL, status text NOT NULL, score integer NOT NULL, progress text NOT NULL, total integer, image text, notes, text, isAdult text);
