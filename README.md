@@ -1,6 +1,6 @@
 # xenylist
 
-An almost self-hosted anime/manga tracker.
+A self-hosted anime/manga tracker.
 
 Made this because AniList's mods continued banning me, and I couldn't cope with MyAnimeList's slow servers & outdated UI.
 
