@@ -219,7 +219,7 @@ ul.topnav li .active {
   ul.topnav li.right, 
   ul.topnav li {
     float: none;
-    width: 100%;
+    width: 100vw;
   }
   ul.topnav {
     padding-left: 0px;

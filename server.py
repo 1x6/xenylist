@@ -97,7 +97,7 @@ def edit():
             ).start()
 
     elif media_type == "manga":
-        xenylist.update_anime(media_id, progress, score, status)
+        xenylist.update_manga(media_id, progress, score, status)
         if PUSH_ACTIVITY_TO_MONGO:
             threading.Thread(
                 target=latest_activity.send, args=[media_id, progress, media_type]

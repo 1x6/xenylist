@@ -62,6 +62,8 @@ var get_rating_type = function() {
         rating_type = "ten";
       }
     })
+  
+  get_list();
     
 }
 
@@ -224,7 +226,5 @@ var get_list = function() {
   // Get the new one.
 window.addEventListener('load', function() {
   get_rating_type();
-  get_list();
-  
 });
 
