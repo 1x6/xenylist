@@ -28,7 +28,7 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
 
 ## Support
 
-If you have questions or want reasonable support, join the [discord server](https://discord.gg/P9dKS2C8h3).
+If you have questions or want reasonable support, [contact me](https://xeny.uk).
 
 ## Other info
 
