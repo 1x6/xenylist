@@ -137,7 +137,7 @@ def add_media():
             resp.headers["Content-Type"] = "application/json"
             return resp
     if media_type == "manga":
-        if xenylist.check_manga_exists(media_id) == False:
+        if xenylist.check_manga_exists(media_id):
             resp = Response(json.dumps({"error": "Already in list"}))
             resp.headers["Content-Type"] = "application/json"
             return resp
