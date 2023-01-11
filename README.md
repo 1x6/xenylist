@@ -1,16 +1,14 @@
 # xenylist
 
-A self-hosted anime/manga tracker.
+A self-hosted anime/manga tracker that allows you to track your anime/manga on your desktop. It was created as an alternative to AniList and MyAnimeList because of their slow servers and outdated UI.
 
-Made this because AniList's mods continued banning me, and I couldn't cope with MyAnimeList's slow servers & outdated UI.
+## Features
 
-## Features:
-
-- Track Anime/Manga on your desktop
-- List editing, filters
-- Importing list from AniList
-- Lightweight, easy to set up
-- Open source
+- Track anime/manga on your desktop
+- List editing and filtering
+- Importing lists from AniList
+- Lightweight and easy to set up
+- Open-source
 
 ## Images
 <img src="https://user-images.githubusercontent.com/44981148/189462374-8232d4dc-8689-4af5-8134-7e4e480bcf15.png" />
@@ -18,40 +16,34 @@ Made this because AniList's mods continued banning me, and I couldn't cope with 
 
 ## Installation
 
-- Clone the repo to a server (or your local machine)
-  `git clone https://github.com/1x6/xenylist && cd xenylist`
-- Install sqlite3 `sudo apt install sqlite3`
-- Import your lists using `import_from_anilist.py` (edit the variables which are hard coded)
-- Install the python requirements with `pip install -r requirements.txt`
-- Run `server.py`
-- Done!
+1. Clone the repo to a server or your local machine: `git clone https://github.com/1x6/xenylist.git && cd xenylist`
+2. Install sqlite3: `sudo apt install sqlite3`
+3. Import your lists using `import_from_anilist.py` (make sure to edit the hard-coded variables)
+4. Install the python requirements: `pip install -r requirements.txt`
+5. Run `server.py`
+6. Done!
 
 ## Support
 
-If you have questions or want reasonable support, [contact me](https://xeny.uk).
+If you have any questions or need support, please contact me at https://xeny.uk
 
-## Other info
+## Additional Information
 
-If you are running this on a cloud server, consider adding password protection using nginx. Authentication coming eventually.
+If you are running xenylist on a cloud server, consider adding password protection using nginx. Authentication is planned for future releases.
 
-For SSL, you can use the Cloudflare proxying feature, which automatically provisions a free SSL cert. You can also use certbot if you'd prefer that.
+For SSL, you can use the Cloudflare proxying feature, which automatically provisions a free SSL cert. Alternatively, you can use certbot.
 
-I run this on a Raspberry Pi on my local network, so no bad actors can touch it.
+I run xenylist on a Raspberry Pi on my local network to prevent bad actors from accessing it.
 
-## To-do:
+## To-do
 
-- If list already in list, change alert
+- Alert when a list is already in the list
 - Password authentication for exposed instances
 - Improved CSS
 - Account system (?)
 
-## Disclaimers
+## Disclaimer
 
-No copyright infringement intended with the name or logo of 'xenylist'. Stored list data is scraped from AniList. This may be against their API terms of service, as _xenylist_ could be considered as a 'competing non-complementary services of the same nature'. Even so, what are they going to do? IP ban you from their API? 🙀
+xenylist is not intended to infringe on any copyrights. The stored list data is scraped from AniList, which may be against their API terms of service as xenylist could be considered as a "competing non-complementary service of the same nature". However, please note that the worst that can happen is that your IP will be banned from the AniList API.
 
-As always, the standard applies:
-
-> USE THis AT YoUR OwN riSk. thIS waS madE fOR eDUCatiOnaL pURPOseS.
-> or smth.. it's just an anime tracker??
-
- jonah helped meow
+As always, please use this software at your own risk. It was created for educational purposes and is only an anime tracker.
