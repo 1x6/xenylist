@@ -3,6 +3,7 @@ import json
 import requests
 import time
 
+
 def conf(key):
     try:
         with open("config.json") as f:
@@ -10,6 +11,7 @@ def conf(key):
         return li_conf.get(key)
     except:
         pass
+
 
 myclient = pymongo.MongoClient(conf("mongodb"))
 

@@ -1,39 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>xenylist - Manga List</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/11b8b2740f.js" crossorigin="anonymous"></script>
-  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-  <ul id="navbar" class="topnav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/anime">Anime List</a></li>
-    <li><a class="active" href="/manga">Manga List</a></li>
-    <li><a href="/add">Add Entry</a></li>
-  </ul>
-  <div class="main">
-        
+  <head>
+    <meta charset="UTF-8" />
+    <title>xenylist - Manga List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/11b8b2740f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <ul id="navbar" class="topnav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/anime">Anime List</a></li>
+      <li><a class="active" href="/manga">Manga List</a></li>
+      <li><a href="/add">Add Entry</a></li>
+    </ul>
+    <div class="main">
+      <div style="display: inline" class="search-container">
+        <input
+          type="text"
+          id="search"
+          class="search-box"
+          onkeyup="search()"
+          placeholder="Search..."
+        />
+      </div>
+      <div class="list-type-container">
+        <button class="list-type-btn" id="all">All</button>
+        <button class="list-type-btn" id="current">Current</button>
+        <button class="list-type-btn" id="completed">Completed</button>
+        <button class="list-type-btn" id="paused">Paused</button>
+        <button class="list-type-btn" id="dropped">Dropped</button>
+        <button class="list-type-btn" id="planning">Planning</button>
+      </div>
 
-          <div style="display: inline" class="search-container">
-            <input type="text" id="search" class="search-box" onkeyup="search()" placeholder="Search...">
-          </div>
-          <div class="list-type-container">
-            <button class="list-type-btn" id="all">All</button>
-            <button class="list-type-btn" id="current">Current</button>
-            <button class="list-type-btn" id="completed">Completed</button>
-            <button class="list-type-btn" id="paused" >Paused</button>
-            <button class="list-type-btn" id="dropped">Dropped</button>
-            <button class="list-type-btn" id="planning">Planning</button>
-            
-          </div>
-
-          <table class="table" id="mediaTable"></table>
+      <table class="table" id="mediaTable"></table>
     </div>
-
-</body>
+  </body>
 </html>

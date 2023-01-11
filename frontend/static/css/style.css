@@ -1,27 +1,19 @@
-/* switched to the AniList font LOL
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; } 
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
+@import url(https://overpass-30e2.kxcdn.com/overpass.css);
+
+html {
+  font-family: "Overpass", sans-serif;
 }
-*/
-
-@import url('https://overpass-30e2.kxcdn.com/overpass.css');
-html { font-family: 'Overpass', sans-serif; }
-
 
 :root {
-    --accent: #5193fd;
-    --font: #9fadbd;
+  --accent: #5193fd;
+  --font: #9fadbd;
 }
 
 body {
-    background-color: #0b1622;
-    font-family: Overpass !important;
-    color: var(--font);
+  background-color: #0b1622;
+  font-family: Overpass !important;
+  color: var(--font);
 }
-
-
 
 .fa-solid {
   color: #dcddde;
@@ -30,7 +22,6 @@ body {
   font-size: 20px;
   text-align: center;
   margin-top: 10px;
-  
 }
 
 .fa-solid:hover {
@@ -52,7 +43,6 @@ body {
 
 .main {
   color: var(--font);
-
 }
 
 @media (max-width: 600px) {
@@ -70,7 +60,6 @@ body {
   .main {
     margin-left: 5px;
     margin-right: 5px;
-    /* add more shit like font and stuff */
   }
 }
 
@@ -82,17 +71,14 @@ table {
   background-color: #151f2e;
   padding: 10px;
   border-radius: 10px;
-
-
   table-layout: fixed;
-
 }
 
-th, td {
+td,
+th {
   padding: 10px;
   border-bottom: 1px solid #1c2b3a;
 }
-
 
 .center {
   text-align: center;
@@ -106,18 +92,17 @@ th, td {
   width: 40px;
 }
 
-/* the second */
 td:nth-child(1) {
   width: 5%;
 }
 
-.title {
+.title,
+.title:hover {
   transition: 0.5s ease-in-out;
 }
 
 .title:hover {
   color: var(--accent);
-  transition: 0.5s ease-in-out;
 }
 
 .search-box {
@@ -129,18 +114,18 @@ td:nth-child(1) {
   background-color: #151f2e;
   color: #8592a3;
   vertical-align: middle;
-  
 }
 
 .search-box:focus {
-  outline: none;
+  outline: 0;
 }
 
 #search input {
   font-size: 15px;
 }
+
 #search input::placeholder {
-font-size: 15px;
+  font-size: 15px;
 }
 
 @media screen and (max-width: 500px) {
@@ -149,14 +134,13 @@ font-size: 15px;
     font-size: 30px !important;
   }
 }
-  
 
 .list-type-container {
   display: inline-block;
 }
 
 .list-type-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   width: auto;
   height: 50px;
   border: #151f2e solid 5px;
@@ -188,7 +172,6 @@ ul.topnav {
   padding-right: 20%;
   position: sticky;
   transition: 0.5s ease-in-out;
-
 }
 
 ul.topnav li {
@@ -216,13 +199,14 @@ ul.topnav li .active {
 }
 
 @media screen and (max-width: 600px) {
-  ul.topnav li.right, 
-  ul.topnav li {
+  ul.topnav li,
+  ul.topnav li.right {
     float: none;
     width: 100vw;
   }
+
   ul.topnav {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
