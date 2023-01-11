@@ -1,16 +1,10 @@
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
+const navbar = document.getElementById("navbar");
+let prevScrollpos = window.pageYOffset;
 
-  if (window.pageYOffset === 0) {
-    document.getElementById("navbar").style.backgroundColor = "#0b1622";
-  } else {
-    document.getElementById("navbar").style.backgroundColor = "#09121b";
-  }
-} 
+window.onscroll = function() {
+  const currentScrollPos = window.pageYOffset;
+  
+  navbar.style.top = prevScrollpos > currentScrollPos ? "0" : "-50px";
+  prevScrollpos = currentScrollPos;
+  navbar.style.backgroundColor = currentScrollPos === 0 ? "#0b1622" : "#09121b";
+};
