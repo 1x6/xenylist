@@ -33,7 +33,7 @@ If you are running xenylist on a cloud server, consider adding password protecti
 
 For SSL, you can use the Cloudflare proxying feature, which automatically provisions a free SSL cert. Alternatively, you can use certbot.
 
-I run xenylist on a Raspberry Pi on my local network to prevent bad actors from accessing it.
+I run this on a Raspberry Pi on my local network to prevent bad actors from accessing it.
 
 ## To-do
 
