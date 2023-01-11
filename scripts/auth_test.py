@@ -20,5 +20,5 @@ def create_user(username, password):
 
 def check_user(username, password):
     if user := mycol.find_one({"username": username}):
-        return user['password'] == hashlib.sha256(password.encode('utf-8')).hexdigest()
+        return user["password"] == hashlib.sha256(password.encode("utf-8")).hexdigest()
     return False

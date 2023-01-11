@@ -5,6 +5,7 @@ cursor = connection.cursor()
 
 LIST = "anime"
 
+
 def importx():
     title = "TEST SUBJECT"
     media_id = 999
@@ -15,7 +16,11 @@ def importx():
     image = "ZZZZZZ"
     notes = "CAT"
     isAdult = "TRUE"
-    cursor.execute("INSERT INTO ? VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (LIST, title, media_id, status, score, progress, total, image, notes, isAdult))
+    cursor.execute(
+        "INSERT INTO ? VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (LIST, title, media_id, status, score, progress, total, image, notes, isAdult),
+    )
     connection.commit()
+
 
 importx()

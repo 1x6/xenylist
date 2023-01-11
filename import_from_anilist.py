@@ -3,7 +3,7 @@ from server import conf
 import database
 
 ANILIST_USER_ID = 5964458
-MEDIA_TYPE = "anime"   # anime or manga
+MEDIA_TYPE = "anime"  # anime or manga
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0"
@@ -13,9 +13,7 @@ data1 = {
     "query": "query($userId:Int,$userName:String,$type:MediaType){MediaListCollection(userId:$userId,userName:$userName,type:$type){lists{name isCustomList isCompletedList:isSplitCompletedList entries{...mediaListEntry}}user{id name avatar{large}mediaListOptions{scoreFormat rowOrder animeList{sectionOrder customLists splitCompletedSectionByFormat theme}mangaList{sectionOrder customLists splitCompletedSectionByFormat theme}}}}}fragment mediaListEntry on MediaList{id mediaId status score progress progressVolumes repeat priority private hiddenFromStatusLists customLists advancedScores notes updatedAt startedAt{year month day}completedAt{year month day}media{id title{userPreferred romaji english native}coverImage{extraLarge large}type format status(version:2)episodes volumes chapters averageScore popularity isAdult countryOfOrigin genres bannerImage startDate{year month day}}}",
     "variables": {"userId": ANILIST_USER_ID, "type": f"{MEDIA_TYPE.upper()}"},
 }
-response = requests.post(
-    "https://graphql.anilist.co", headers=headers, json=data1
-)
+response = requests.post("https://graphql.anilist.co", headers=headers, json=data1)
 rj = response.json()
 
 feeds = []
@@ -59,5 +57,15 @@ for i in rj["data"]["MediaListCollection"]["lists"]:
 for x in feeds:
     print(x)
     database.xenylist.initiate()
-    database.xenylist.add_media(MEDIA_TYPE, x['title'], x['media_id'], x['status'], x['score'], x['progress'], x['total'], x['image'], x['notes'], x['isAdult'])
-
+    database.xenylist.add_media(
+        MEDIA_TYPE,
+        x["title"],
+        x["media_id"],
+        x["status"],
+        x["score"],
+        x["progress"],
+        x["total"],
+        x["image"],
+        x["notes"],
+        x["isAdult"],
+    )

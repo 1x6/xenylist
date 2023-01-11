@@ -57,6 +57,7 @@ def favicon():
 #################################
 # API
 
+
 @app.route("/api/rating_type")
 def rating_type():
     resp = Response(json.dumps({"rating_type": conf("rating_type")}))
@@ -148,7 +149,6 @@ def add_media():
     r = requests.post("https://graphql.anilist.co", json=postme)
     resp = r.json()
 
-
     title = resp["data"]["Media"]["title"]["english"]
     if resp["data"]["Media"]["title"]["english"] is None:
         title = resp["data"]["Media"]["title"]["romaji"]
@@ -164,11 +164,32 @@ def add_media():
     notes = ""
     isAdult = resp["data"]["Media"]["isAdult"]
 
-
     if media_type == "anime":
-        xenylist.add_media("anime", title, media_id, status, score, progress, total, image, notes, isAdult)
+        xenylist.add_media(
+            "anime",
+            title,
+            media_id,
+            status,
+            score,
+            progress,
+            total,
+            image,
+            notes,
+            isAdult,
+        )
     elif media_type == "manga":
-        xenylist.add_media("manga", title, media_id, status, score, progress, total, image, notes, isAdult)
+        xenylist.add_media(
+            "manga",
+            title,
+            media_id,
+            status,
+            score,
+            progress,
+            total,
+            image,
+            notes,
+            isAdult,
+        )
 
     resp = Response(json.dumps({"title": title, "success": True}))
     return resp

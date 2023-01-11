@@ -5,6 +5,7 @@ import sqlite3, json
 connection = sqlite3.connect("db/list.db", check_same_thread=False)
 cursor = connection.cursor()
 
+
 def importx(json):
     title = json["title"]
     media_id = int(json["media_id"])
@@ -15,11 +16,15 @@ def importx(json):
     image = json["image"]
     notes = json["notes"]
     isAdult = json["isAdult"]
-    cursor.execute("INSERT INTO manga VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (title, media_id, status, score, progress, total, image, notes, isAdult))
+    cursor.execute(
+        "INSERT INTO manga VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (title, media_id, status, score, progress, total, image, notes, isAdult),
+    )
     connection.commit()
 
+
 def main():
-    with open('manga.json', encoding="utf-8") as f:
+    with open("manga.json", encoding="utf-8") as f:
         data = json.load(f)
 
     for entry in data:

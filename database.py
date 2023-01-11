@@ -1,16 +1,16 @@
-import sqlite3, json 
+import sqlite3, json
 
 
 connection = sqlite3.connect("db/list.db", check_same_thread=False)
 cursor = connection.cursor()
 
 
-class xenylist: 
+class xenylist:
+    def initiate() -> None:
+        """Creates all tables if they do not exist"""
 
-    def initiate() -> None: 
-        """ Creates all tables if they do not exist"""
-
-        cursor.execute("""CREATE TABLE IF NOT EXISTS anime (
+        cursor.execute(
+            """CREATE TABLE IF NOT EXISTS anime (
             title text,
             media_id int,
             status text,
@@ -20,9 +20,11 @@ class xenylist:
             image text,
             notes text,
             isAdult text
-        )""")
+        )"""
+        )
 
-        cursor.execute("""CREATE TABLE IF NOT EXISTS manga (
+        cursor.execute(
+            """CREATE TABLE IF NOT EXISTS manga (
             title text,
             media_id int,
             status text,
@@ -32,11 +34,12 @@ class xenylist:
             image text,
             notes text,
             isAdult text
-        )""")
+        )"""
+        )
 
         connection.commit()
 
-    def get_anime_list(): 
+    def get_anime_list():
         query = cursor.execute("SELECT * FROM anime")
         anime = []
         for entry in query.fetchall():
@@ -53,8 +56,8 @@ class xenylist:
             }
             anime.append(data)
         return anime
-            
-    def get_manga_list(): 
+
+    def get_manga_list():
         query = cursor.execute("SELECT * FROM manga")
         manga = []
         for entry in query.fetchall():
@@ -78,7 +81,7 @@ class xenylist:
             (progress, score, status, self),
         )
         connection.commit()
-            
+
     def update_manga(self, progress, score, status):
         cursor.execute(
             """UPDATE manga SET progress = ?, score = ?, status = ? WHERE media_id = ?""",
@@ -87,10 +90,10 @@ class xenylist:
         connection.commit()
 
     def delete_anime(self):
-        cursor.execute("""DELETE FROM anime WHERE media_id = ?""", (self, ))
+        cursor.execute("""DELETE FROM anime WHERE media_id = ?""", (self,))
 
     def delete_manga(self):
-        cursor.execute("""DELETE FROM manga WHERE media_id = ?""", (self, ))
+        cursor.execute("""DELETE FROM manga WHERE media_id = ?""", (self,))
 
     def check_anime_exists(self):
         rows = cursor.execute(
@@ -104,9 +107,23 @@ class xenylist:
         ).fetchall()
         return len(rows) >= 1
 
-    def add_media(_type, title, media_id, status, score, progress, total, image, notes, isAdult):
+    def add_media(
+        _type, title, media_id, status, score, progress, total, image, notes, isAdult
+    ):
         cursor.execute(
-            """INSERT INTO TYPE VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""".replace("TYPE", _type),
-            (title, media_id, status, score, progress, total, image, notes, isAdult,)
-            )
+            """INSERT INTO TYPE VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""".replace(
+                "TYPE", _type
+            ),
+            (
+                title,
+                media_id,
+                status,
+                score,
+                progress,
+                total,
+                image,
+                notes,
+                isAdult,
+            ),
+        )
         connection.commit()
