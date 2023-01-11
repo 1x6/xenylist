@@ -23,43 +23,33 @@ feeds = []
 types = ["completed", "watching", "dropped", "planning", "paused"]
 
 for i in rj["data"]["MediaListCollection"]["lists"]:
-    if MEDIA_TYPE == "anime":
-        for _ in range(4):
-            for item in rj["data"]["MediaListCollection"]["lists"][_]["entries"]:
-                dict_ = {}
+    for _ in range(4):
+        for item in rj["data"]["MediaListCollection"]["lists"][_]["entries"]:
+            if MEDIA_TYPE == "anime":
                 print(item)
-                dict_["title"] = item["media"]["title"]["english"]
+                dict_ = {"title": item["media"]["title"]["english"]}
                 if item["media"]["title"]["english"] is None:
                     dict_["title"] = item["media"]["title"]["romaji"]
                 dict_["media_id"] = item["mediaId"]
                 dict_["status"] = item["status"].lower()
                 dict_["score"] = item["score"]
                 dict_["progress"] = item["progress"]
-                if MEDIA_TYPE == "anime":
-                    dict_["total"] = item["media"]["episodes"]
-                elif MEDIA_TYPE == "manga":
-                    dict_["total"] = item["media"]["chapters"]
+                dict_["total"] = item["media"]["episodes"]
                 dict_["image"] = item["media"]["coverImage"]["large"]
                 dict_["notes"] = ""
                 dict_["isAdult"] = item["media"]["isAdult"]
                 feeds.append(dict_)
                 print(dict_)
-    elif MEDIA_TYPE == "manga":
-        for _ in range(4):
-            for item in rj["data"]["MediaListCollection"]["lists"][_]["entries"]:
-                dict_ = {}
+            elif MEDIA_TYPE == "manga":
                 print(item)
-                dict_["title"] = item["media"]["title"]["english"]
+                dict_ = {"title": item["media"]["title"]["english"]}
                 if item["media"]["title"]["english"] is None:
                     dict_["title"] = item["media"]["title"]["romaji"]
                 dict_["media_id"] = item["mediaId"]
                 dict_["status"] = item["status"].lower()
                 dict_["score"] = item["score"]
                 dict_["progress"] = item["progressVolumes"]
-                if MEDIA_TYPE == "anime":
-                    dict_["total"] = item["media"]["episodes"]
-                elif MEDIA_TYPE == "manga":
-                    dict_["total"] = item["media"]["chapters"]
+                dict_["total"] = item["media"]["chapters"]
                 dict_["image"] = item["media"]["coverImage"]["large"]
                 dict_["notes"] = ""
                 dict_["isAdult"] = item["media"]["isAdult"]

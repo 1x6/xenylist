@@ -40,16 +40,17 @@ class xenylist:
         query = cursor.execute("SELECT * FROM anime")
         anime = []
         for entry in query.fetchall():
-            data = {}
-            data["title"] = entry[0]
-            data["media_id"] = entry[1]
-            data["status"] = entry[2]
-            data["score"] = entry[3]
-            data["progress"] = entry[4]
-            data["total"] = entry[5]
-            data["image"] = entry[6]
-            data["notes"] = entry[7]
-            data["isAdult"] = entry[8]
+            data = {
+                "title": entry[0],
+                "media_id": entry[1],
+                "status": entry[2],
+                "score": entry[3],
+                "progress": entry[4],
+                "total": entry[5],
+                "image": entry[6],
+                "notes": entry[7],
+                "isAdult": entry[8],
+            }
             anime.append(data)
         return anime
             
@@ -57,64 +58,51 @@ class xenylist:
         query = cursor.execute("SELECT * FROM manga")
         manga = []
         for entry in query.fetchall():
-            data = {}
-            data["title"] = entry[0]
-            data["media_id"] = entry[1]
-            data["status"] = entry[2]
-            data["score"] = entry[3]
-            data["progress"] = entry[4]
-            data["total"] = entry[5]
-            data["image"] = entry[6]
-            data["notes"] = entry[7]
-            data["isAdult"] = entry[8]
+            data = {
+                "title": entry[0],
+                "media_id": entry[1],
+                "status": entry[2],
+                "score": entry[3],
+                "progress": entry[4],
+                "total": entry[5],
+                "image": entry[6],
+                "notes": entry[7],
+                "isAdult": entry[8],
+            }
             manga.append(data)
         return manga
 
-    def update_anime(media_id, progress, score, status):
+    def update_anime(self, progress, score, status):
         cursor.execute(
             """UPDATE anime SET progress = ?, score = ?, status = ? WHERE media_id = ?""",
-            (progress, score, status, media_id,)
+            (progress, score, status, self),
         )
         connection.commit()
             
-    def update_manga(media_id, progress, score, status):
+    def update_manga(self, progress, score, status):
         cursor.execute(
             """UPDATE manga SET progress = ?, score = ?, status = ? WHERE media_id = ?""",
-            (progress, score, status, media_id,)
+            (progress, score, status, self),
         )
         connection.commit()
 
-    def delete_anime(media_id):
-        cursor.execute(
-            """DELETE FROM anime WHERE media_id = ?""",
-            (media_id,)
-        )
+    def delete_anime(self):
+        cursor.execute("""DELETE FROM anime WHERE media_id = ?""", (self, ))
 
-    def delete_manga(media_id):
-        cursor.execute(
-            """DELETE FROM manga WHERE media_id = ?""",
-            (media_id,)
-        )
+    def delete_manga(self):
+        cursor.execute("""DELETE FROM manga WHERE media_id = ?""", (self, ))
 
-    def check_anime_exists(media_id):
+    def check_anime_exists(self):
         rows = cursor.execute(
-            """SELECT title FROM anime WHERE media_id = ? """,
-            (media_id,)
-            ).fetchall()
-        if len(rows) >= 1:
-            return True
-        else:
-            return False
+            """SELECT title FROM anime WHERE media_id = ? """, (self,)
+        ).fetchall()
+        return len(rows) >= 1
 
-    def check_manga_exists(media_id):
+    def check_manga_exists(self):
         rows = cursor.execute(
-            """SELECT title FROM manga WHERE media_id = ? """,
-            (media_id,)
-            ).fetchall()
-        if len(rows) >= 1:
-            return True
-        else:
-            return False
+            """SELECT title FROM manga WHERE media_id = ? """, (self,)
+        ).fetchall()
+        return len(rows) >= 1
 
     def add_media(_type, title, media_id, status, score, progress, total, image, notes, isAdult):
         cursor.execute(
