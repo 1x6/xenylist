@@ -1,209 +1,212 @@
 @import url(https://overpass-30e2.kxcdn.com/overpass.css);
 
 html {
-    font-family: "Overpass",sans-serif
+  font-family: "Overpass", sans-serif;
 }
 
 :root {
-    --accent: #5193fd;
-    --font: #9fadbd
+  --accent: #5193fd;
+  --font: #9fadbd;
 }
 
 body {
-    background-color: #0b1622;
-    font-family: Overpass!important;
-    color: var(--font)
+  background-color: #0b1622;
+  font-family: Overpass !important;
+  color: var(--font);
 }
 
 .fa-solid {
-    color: #dcddde;
-    transition: .3s;
-    display: block;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px
+  color: #dcddde;
+  transition: 0.3s;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .fa-solid:hover {
-    color: var(--accent);
-    cursor: pointer
+  color: var(--accent);
+  cursor: pointer;
 }
 
 .fa-star {
-    display: inline;
-    font-size: 15px
+  display: inline;
+  font-size: 15px;
 }
 
-@media (min-width:1400px) {
-    .main {
-        margin-left: 380px;
-        margin-right: 380px
-    }
+@media (min-width: 1400px) {
+  .main {
+    margin-left: 380px;
+    margin-right: 380px;
+  }
 }
 
 .main {
-    color: var(--font)
+  color: var(--font);
 }
 
-@media (max-width:600px) {
-    .main {
-        margin-left: 10px;
-        margin-right: 10px
-    }
+@media (max-width: 600px) {
+  .main {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
-    td {
-        font-size: 20px
-    }
+  td {
+    font-size: 20px;
+  }
 }
 
-@media only screen and (max-width:400px) {
-    .main {
-        margin-left: 5px;
-        margin-right: 5px
-    }
+@media only screen and (max-width: 400px) {
+  .main {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 .headers {
-    font-weight: 500
+  font-weight: 500;
 }
 
 table {
-    background-color: #151f2e;
-    padding: 10px;
-    border-radius: 10px;
-    table-layout: fixed
+  background-color: #151f2e;
+  padding: 10px;
+  border-radius: 10px;
+  table-layout: fixed;
 }
 
-td,th {
-    padding: 10px;
-    border-bottom: 1px solid #1c2b3a
+td,
+th {
+  padding: 10px;
+  border-bottom: 1px solid #1c2b3a;
 }
 
 .center {
-    text-align: center
+  text-align: center;
 }
 
 .cover-icon {
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 3px;
-    height: 40px;
-    width: 40px
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 3px;
+  height: 40px;
+  width: 40px;
 }
 
 td:nth-child(1) {
-    width: 5%
+  width: 5%;
 }
 
-.title,.title:hover {
-    transition: .5s ease-in-out
+.title,
+.title:hover {
+  transition: 0.5s ease-in-out;
 }
 
 .title:hover {
-    color: var(--accent)
+  color: var(--accent);
 }
 
 .search-box {
-    width: 110px;
-    height: 20px;
-    border: #151f2e solid 5px;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #151f2e;
-    color: #8592a3;
-    vertical-align: middle
+  width: 110px;
+  height: 20px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #151f2e;
+  color: #8592a3;
+  vertical-align: middle;
 }
 
 .search-box:focus {
-    outline: 0
+  outline: 0;
 }
 
 #search input {
-    font-size: 15px
+  font-size: 15px;
 }
 
 #search input::placeholder {
-    font-size: 15px
+  font-size: 15px;
 }
 
-@media screen and (max-width:500px) {
-    .list-type-btn {
-        padding: 1px!important;
-        font-size: 30px!important
-    }
+@media screen and (max-width: 500px) {
+  .list-type-btn {
+    padding: 1px !important;
+    font-size: 30px !important;
+  }
 }
 
 .list-type-container {
-    display: inline-block
+  display: inline-block;
 }
 
 .list-type-btn {
-    font-family: "Inter",sans-serif;
-    width: auto;
-    height: 50px;
-    border: #151f2e solid 5px;
-    border-radius: 10px;
-    background-color: #151f2e!important;
-    color: #8592a3;
-    text-align: center;
-    transition: ease .7s;
-    font-size: 13px;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px
+  font-family: "Inter", sans-serif;
+  width: auto;
+  height: 50px;
+  border: #151f2e solid 5px;
+  border-radius: 10px;
+  background-color: #151f2e !important;
+  color: #8592a3;
+  text-align: center;
+  transition: ease 0.7s;
+  font-size: 13px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .list-type-btn:hover {
-    color: var(--accent);
-    transition: ease .7s;
-    cursor: pointer
+  color: var(--accent);
+  transition: ease 0.7s;
+  cursor: pointer;
 }
 
 ul.topnav {
-    list-style-type: none;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: -8px;
-    overflow: hidden;
-    background-color: #09121b;
-    padding-left: 20%;
-    padding-right: 20%;
-    position: sticky;
-    transition: .5s ease-in-out
+  list-style-type: none;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: -8px;
+  overflow: hidden;
+  background-color: #09121b;
+  padding-left: 20%;
+  padding-right: 20%;
+  position: sticky;
+  transition: 0.5s ease-in-out;
 }
 
 ul.topnav li {
-    float: left;
-    width: 25%
+  float: left;
+  width: 25%;
 }
 
 ul.topnav li a {
-    display: block;
-    color: #8b99a9;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: .3s ease
+  display: block;
+  color: #8b99a9;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
 ul.topnav li a:hover {
-    color: var(--accent);
-    transition: .3s ease
+  color: var(--accent);
+  transition: 0.3s ease;
 }
 
 ul.topnav li .active {
-    color: var(--accent)
+  color: var(--accent);
 }
 
-@media screen and (max-width:600px) {
-    ul.topnav li,ul.topnav li.right {
-        float: none;
-        width: 100vw
-    }
+@media screen and (max-width: 600px) {
+  ul.topnav li,
+  ul.topnav li.right {
+    float: none;
+    width: 100vw;
+  }
 
-    ul.topnav {
-        padding-left: 0;
-        padding-right: 0
-    }
+  ul.topnav {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
