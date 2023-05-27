@@ -1,7 +1,7 @@
 import sqlite3, json 
 
 
-connection = sqlite3.connect("db/list.db", check_same_thread=False)
+connection = sqlite3.connect("list.db", check_same_thread=False)
 cursor = connection.cursor()
 
 
