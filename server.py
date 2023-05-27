@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask, render_template, request, Response, send_file
 from flask_cors import CORS
 import os
